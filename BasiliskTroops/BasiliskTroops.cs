@@ -48,11 +48,16 @@ namespace BasiliskTroops
             "mod_basilisk_master",
             "mod_basilisk_grandmaster"
         };
-
+        
+        private void OnSessionLaunched(CampaignGameStarter obj)
+        {
+            populateGuilds();
+            AddTroopDialog(obj);
+        }
 
         public override void RegisterEvents()
         {
-            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.AddTroopDialog));
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnSessionLaunched));
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, this.trackWeekly);
         }
 
@@ -63,7 +68,7 @@ namespace BasiliskTroops
 
             TroopProperties troopProps;
             troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
-            int cost = (int)Math.Ceiling(troopProps.getSelf().Town.Prosperity * 2);
+            int cost = troopProps.getCost();
             obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its mercenaries, both commoners and nobles, in every town for quite the coin. The guild leader tells you that their mercenaries travel among their locations weekly. She also tells you that there is an initial fee of " + cost + " denars here just for the guild to show you their mercenaries. It is however the only fee besides upkeep cost you pay for.", null);
 
             obj.AddGameMenu("town_mod_troop_type", "The guild leader shows you their list of mercenaries and ask which you want. She will send the ones you paid for to wait by the gates for when you leave town.", null);
