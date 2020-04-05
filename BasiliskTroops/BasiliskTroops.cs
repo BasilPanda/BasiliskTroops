@@ -86,7 +86,7 @@ namespace BasiliskTroops
                     GameMenu.SwitchToMenu("town_mod_troop_type");
                 });
 
-            obj.AddGameMenuOption("town_mod_troop_type", "notpaying", "Nevermind", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
+            obj.AddGameMenuOption("town_mod_pay", "notpaying", "Nevermind", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
 
             obj.AddGameMenuOption("town_mod_troop_type", "militia_type", "Hire Commoners", this.game_menu_just_add_recruit_conditional, this.conversation_miltia_on_consequence);
             obj.AddGameMenuOption("town_mod_troop_type", "noble_type", "Hire Nobles", this.game_menu_just_add_recruit_conditional, this.conversation_noble_on_consequence);
