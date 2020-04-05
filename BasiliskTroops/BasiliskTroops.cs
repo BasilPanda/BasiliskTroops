@@ -59,7 +59,7 @@ namespace BasiliskTroops
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnSessionLaunched));
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, this.trackWeekly);
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, this.trackDaily);
         }
 
         public void AddTroopMenu(CampaignGameStarter obj)
@@ -105,8 +105,8 @@ namespace BasiliskTroops
 
             obj.AddGameMenuOption("town_mod_pay", "notpaying", "Nevermind", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
 
-            obj.AddGameMenuOption("town_mod_troop_type", "militia_type", "Hire Commoners", this.game_menu_just_add_recruit_conditional, this.conversation_miltia_on_consequence);
-            obj.AddGameMenuOption("town_mod_troop_type", "noble_type", "Hire Nobles", this.game_menu_just_add_recruit_conditional, this.conversation_noble_on_consequence);
+            obj.AddGameMenuOption("town_mod_troop_type", "militia_type", "Look at the Commoners list", this.game_menu_just_add_recruit_conditional, this.conversation_miltia_on_consequence);
+            obj.AddGameMenuOption("town_mod_troop_type", "noble_type", "Look at the Nobles list", this.game_menu_just_add_recruit_conditional, this.conversation_noble_on_consequence);
             obj.AddGameMenuOption("town_mod_troop_type", "mod_leave", "I'm done looking", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
         }
 
@@ -141,16 +141,21 @@ namespace BasiliskTroops
             PartyScreenManager.OpenScreenAsManageTroops(troopProperties.nobles);
         }
 
-        // Updates the parties weekly
-        public void trackWeekly()
+        // Updates the parties daily
+        public void trackDaily()
         {
-            foreach(string id in troopDic.Keys)
+            string id = "";
+            foreach(Settlement settlement in Settlement.All)
             {
-                TroopProperties townTroopProperties;
-                troopDic.TryGetValue(id, out townTroopProperties);
-                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, militiaTroopIDs, 0);
-                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, nobleTroopIDs, 1);
-                troopDic[id] = townTroopProperties;
+                if(settlement.IsTown)
+                {
+                    id = settlement.StringId;
+                    TroopProperties townTroopProperties;
+                    troopDic.TryGetValue(id, out townTroopProperties);
+                    townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, militiaTroopIDs, 0);
+                    townTroopProperties.nobles = generateParty(townTroopProperties.getSelf().Town, nobleTroopIDs, 1);
+                    troopDic[id] = townTroopProperties;
+                }
             }
         }
 
