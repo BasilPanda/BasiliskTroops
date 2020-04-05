@@ -1,16 +1,38 @@
 ﻿using System;
-using System.Linq;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.GameMenus;
-using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Core;
-using TaleWorlds.Localization;
 
 namespace BasiliskTroops
 {
     public class BasiliskTroops : CampaignBehaviorBase
     {
+
+        public static string[] militiaTroopIDs = new string[]
+        {
+            "mod_basilisk_militia",
+            "mod_basilisk_light_infantry",
+            "mod_basilisk_heavy_infantry",
+            "mod_basilisk_slayer",
+            "mod_basilisk_spearman",
+            "mod_basilisk_armored_spearman",
+            "mod_basilisk_skirmisher",
+            "mod_basilisk_archer",
+            "mod_basilisk_ranger",
+            "mod_basilisk_light_cavalry",
+            "mod_basilisk_vanguard"
+        };
+
+        public static string[] nobleTroopIDs = new string[]
+        {
+            "mod_basilisk_nobleman",
+            "mod_basilisk_squire",
+            "mod_basilisk_knight",
+            "mod_basilisk_master",
+            "mod_basilisk_grandmaster"
+        };
+
+
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.AddTroopDialog));
@@ -19,7 +41,7 @@ namespace BasiliskTroops
         public void AddTroopDialog(CampaignGameStarter obj)
         {
 
-            obj.AddGameMenuOption("town", "info_troop_type", "Hire Basilisk Guild Troops", null, this.game_menu_troop_type_on_consq, false, 5);
+            obj.AddGameMenuOption("town", "info_troop_type", "Hire Basilisk Guild Troops", (MenuCallbackArgs args) => { args.optionLeaveType = GameMenuOption.LeaveType.Recruit; return true; }, this.game_menu_troop_type_on_consq, false, 5);
             obj.AddGameMenu("town_mod_troop_type", "Basilisk Guild hiring here", (MenuCallbackArgs args) =>{ args.optionLeaveType = GameMenuOption.LeaveType.Recruit; });
             obj.AddGameMenuOption("town_mod_troop_type", "militia_type", "Commoners", (MenuCallbackArgs args) => { args.optionLeaveType = GameMenuOption.LeaveType.Recruit; return true; }, this.conversation_miltia_on_consequence);
             obj.AddGameMenuOption("town_mod_troop_type", "noble_type", "Nobles", (MenuCallbackArgs args) => { args.optionLeaveType = GameMenuOption.LeaveType.Recruit; return true; }, this.conversation_noble_on_consequence);
@@ -33,39 +55,49 @@ namespace BasiliskTroops
 
         private void game_menu_switch_to_town_menu(MenuCallbackArgs args)
         {
-            GameMenu.SwitchToMenu("village");
+            GameMenu.SwitchToMenu("town");
         }
 
         public void conversation_miltia_on_consequence(MenuCallbackArgs args)
         {
             MobileParty troops = new MobileParty();
-            Village village = Settlement.CurrentSettlement.Village;
-            int num = village.HearthLevel();
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_trainee"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_militia"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_light_infantry"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_heavy_infantry"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_slayer"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_spearman"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_armored_spearman"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_skirmisher"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_archer"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_ranger"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_light_cavalry"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_vanguard"), num);
+            Town town = Settlement.CurrentSettlement.Town;
+            float prosp = town.Prosperity;
+            int troopAmount = (int)Math.Ceiling(prosp / 300);
+
+            foreach(string id in militiaTroopIDs)
+            {
+                if(troopAmount / 2f >= 1)
+                {
+                    troopAmount /= 2;
+                    troops.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount);
+                } else
+                {
+                    break;
+                }
+            }
             PartyScreenManager.OpenScreenAsManageTroops(troops);
         }
 
         public void conversation_noble_on_consequence(MenuCallbackArgs args)
         {
             MobileParty troops = new MobileParty();
-            Village village = Settlement.CurrentSettlement.Village;
-            int num = village.HearthLevel();
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_nobleman"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_squire"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_knight"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_master"), num);
-            troops.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_grandmaster"), num);
+            Town town = Settlement.CurrentSettlement.Town;
+            float prosp = town.Prosperity;
+            int troopAmount = (int)Math.Ceiling(prosp / 300);
+
+            foreach (string id in nobleTroopIDs)
+            {
+                if (troopAmount / 2f >= 1)
+                {
+                    troopAmount /= 2;
+                    troops.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount);
+                }
+                else
+                {
+                    break;
+                }
+            }
             PartyScreenManager.OpenScreenAsManageTroops(troops);
         }
 
