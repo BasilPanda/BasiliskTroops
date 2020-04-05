@@ -1,7 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
+using TaleWorlds.Core;
+using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
-using System.Collections.Generic;
+using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.Overlay;
+using System.IO;
+using System.Xml.Serialization;
+using TaleWorlds.SaveSystem;
 
 namespace BasiliskTroops
 {
@@ -39,7 +53,7 @@ namespace BasiliskTroops
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.AddTroopDialog));
-            CampaignEvents.WeeklyTickEvent.AddNonSerializedListener(this, this.trackWeekly);
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, this.trackWeekly);
         }
 
         public void AddTroopDialog(CampaignGameStarter obj)
@@ -53,24 +67,31 @@ namespace BasiliskTroops
 
             obj.AddGameMenu("town_mod_troop_type", "The guild leader shows you their list of mercenaries and ask which you want. She will send the ones you paid for to wait by the gates for when you leave town.", null);
 
-            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay initial cost of " + cost + " denars", this.game_menu_pay_intial_fee, this.game_menu_troop_type_on_consq);
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay initial cost of " + cost + " denars", 
+                (MenuCallbackArgs args) => 
+                {
+                    args.optionLeaveType = GameMenuOption.LeaveType.Trade;
+                    if (cost >= Hero.MainHero.Gold)
+                    {
+                        return false;
+                    }
+                    return true;
+                }, 
+                (MenuCallbackArgs args) => 
+                {
+                    if (cost <= Hero.MainHero.Gold)
+                    {
+                        GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
+                    }
+                    GameMenu.SwitchToMenu("town_mod_troop_type");
+                });
+
+
             obj.AddGameMenuOption("town_mod_troop_type", "notpaying", "Nevermind", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
 
             obj.AddGameMenuOption("town_mod_troop_type", "militia_type", "Hire Commoners", this.game_menu_just_add_recruit_conditional, this.conversation_miltia_on_consequence);
             obj.AddGameMenuOption("town_mod_troop_type", "noble_type", "Hire Nobles", this.game_menu_just_add_recruit_conditional, this.conversation_noble_on_consequence);
             obj.AddGameMenuOption("town_mod_troop_type", "mod_leave", "I'm done looking", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
-        }
-
-        private bool game_menu_pay_intial_fee(MenuCallbackArgs args)
-        {
-            bool flag = true;
-
-            return flag;
-        }
-
-        private void game_menu_troop_type_on_consq(MenuCallbackArgs args)
-        {
-            GameMenu.SwitchToMenu("town_mod_troop_type");
         }
 
         private void game_menu_switch_to_town_menu(MenuCallbackArgs args)
@@ -90,54 +111,34 @@ namespace BasiliskTroops
             return true;
         }
 
-        // REDO
         public void conversation_miltia_on_consequence(MenuCallbackArgs args)
         {
-            MobileParty troops = new MobileParty();
-            Town town = Settlement.CurrentSettlement.Town;
-            int troopAmount = (int)Math.Ceiling(town.Prosperity / 200);
-
-            foreach(string id in militiaTroopIDs)
-            {
-                if ((int) Math.Floor(troopAmount / 2f) >= 1)
-                {
-                    troopAmount = (int)Math.Floor(troopAmount / 2f);
-                    troops.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount);
-                } else
-                {
-                    break;
-                }
-            }
-            PartyScreenManager.OpenScreenAsManageTroops(troops);
+            TroopProperties troopProperties;
+            this.troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProperties);
+            PartyScreenManager.OpenScreenAsManageTroops(troopProperties.militia);
         }
-
-        // REDO
+        
         public void conversation_noble_on_consequence(MenuCallbackArgs args)
         {
-            MobileParty troops = new MobileParty();
-            Town town = Settlement.CurrentSettlement.Town;
-            int troopAmount = (int)Math.Ceiling(town.Prosperity / 800);
-
-            foreach (string id in nobleTroopIDs)
-            {
-                if ((int)Math.Floor(troopAmount / 2f) >= 1)
-                {
-                    troopAmount = (int)Math.Floor(troopAmount / 2f);
-                    troops.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            PartyScreenManager.OpenScreenAsManageTroops(troops);
+            TroopProperties troopProperties;
+            this.troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProperties);
+            PartyScreenManager.OpenScreenAsManageTroops(troopProperties.nobles);
         }
 
+        // Updates the parties weekly
         public void trackWeekly()
         {
-
+            foreach(string id in troopDic.Keys)
+            {
+                TroopProperties townTroopProperties;
+                troopDic.TryGetValue(id, out townTroopProperties);
+                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, militiaTroopIDs);
+                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, nobleTroopIDs);
+                troopDic[id] = townTroopProperties;
+            }
         }
 
+        // Populates all the guilds in every town
         private void populateGuilds()
         {
             if(troopDic.Count == 0)
@@ -147,7 +148,7 @@ namespace BasiliskTroops
                 {
                     if(settlement.IsTown)
                     {
-                        troopDic.Add(settlement.StringId, new TroopProperties(settlement.StringId, generateParty(settlement.Town, militiaTroopIDs), generateParty(settlement.Town, nobleTroopIDs), 0));
+                        troopDic.Add(settlement.StringId, new TroopProperties(settlement.StringId, generateParty(settlement.Town, militiaTroopIDs), generateParty(settlement.Town, nobleTroopIDs)));
                     }
                 }
             }
@@ -174,9 +175,28 @@ namespace BasiliskTroops
             return party;
         }
 
+        // Loads the mod data
         public override void SyncData(IDataStore dataStore)
         {
             dataStore.SyncData("troopDic", ref troopDic);
+        }
+
+        // Saves the mod data
+        public class BasiliskSaveDefiner : SaveableTypeDefiner
+        {
+            public BasiliskSaveDefiner() : base(91115119)
+            {
+            }
+
+            protected override void DefineClassTypes()
+            {
+                AddClassDefinition(typeof(TroopProperties), 1);
+            }
+
+            protected override void DefineContainerDefinitions()
+            {
+                ConstructContainerDefinition(typeof(Dictionary<string, TroopProperties>));
+            }
         }
     }
 }
