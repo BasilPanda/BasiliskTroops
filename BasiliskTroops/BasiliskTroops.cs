@@ -147,8 +147,8 @@ namespace BasiliskTroops
             {
                 TroopProperties townTroopProperties;
                 troopDic.TryGetValue(id, out townTroopProperties);
-                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, militiaTroopIDs);
-                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, nobleTroopIDs);
+                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, militiaTroopIDs, 0);
+                townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, nobleTroopIDs, 1);
                 troopDic[id] = townTroopProperties;
             }
         }
@@ -163,19 +163,30 @@ namespace BasiliskTroops
                 {
                     if(settlement.IsTown)
                     {
-                        troopDic.Add(settlement.StringId, new TroopProperties(settlement.StringId, generateParty(settlement.Town, militiaTroopIDs), generateParty(settlement.Town, nobleTroopIDs)));
+                        troopDic.Add(settlement.StringId, new TroopProperties(settlement.StringId, generateParty(settlement.Town, militiaTroopIDs, 0), generateParty(settlement.Town, nobleTroopIDs, 1)));
                     }
                 }
             }
         }
 
         // Makes a party depending on town prosperity
-        public MobileParty generateParty(Town town, string[] type)
+        public MobileParty generateParty(Town town, string[] troopIDs, int type)
         {
             MobileParty party = new MobileParty();
-            int troopAmount = (int)Math.Ceiling(town.Prosperity / 800);
 
-            foreach (string id in nobleTroopIDs)
+            int troopAmount = 0;
+            // Militia
+            if (type == 0)
+            {
+                troopAmount = (int)Math.Ceiling(town.Prosperity / 400);
+            }
+            // Nobles
+            else
+            {
+                troopAmount = (int)Math.Ceiling(town.Prosperity / 800);
+            }
+
+            foreach (string id in troopIDs)
             {
                 if ((int)Math.Floor(troopAmount / 2f) >= 1)
                 {
