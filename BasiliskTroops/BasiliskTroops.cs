@@ -52,7 +52,7 @@ namespace BasiliskTroops
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
             populateGuilds();
-            AddTroopDialog(obj);
+            AddTroopMenu(obj);
         }
 
         public override void RegisterEvents()
@@ -61,23 +61,30 @@ namespace BasiliskTroops
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, this.trackWeekly);
         }
 
-        public void AddTroopDialog(CampaignGameStarter obj)
+        public void AddTroopMenu(CampaignGameStarter obj)
         {
 
             obj.AddGameMenuOption("town", "info_troop_type", "Hire Basilisk Guild Troops", game_menu_just_add_recruit_conditional, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("town_mod_pay"); }, false, 5);
-
-            TroopProperties troopProps;
-            troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
-            int cost = troopProps.getCost();
-            obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its mercenaries, both commoners and nobles, in every town for quite the coin. The guild leader tells you that their mercenaries travel among their locations weekly. She also tells you that there is an initial fee of " + cost + " denars here just for the guild to show you their mercenaries. It is however the only fee besides upkeep cost you pay for.", null);
+            
+            obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its mercenaries, both commoners and nobles, in every town for quite the coin. The guild leader tells you that their mercenaries travel among their locations weekly." +
+                " She also tells you that there is a recurring upfront fee of {COST} denars here just to view their mercenaries. It is however the only fee besides upkeep cost you pay for. You do not need to pay per merc.",
+                (MenuCallbackArgs args) => 
+                {
+                    TroopProperties troopProps;
+                    troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
+                    MBTextManager.SetTextVariable("COST", troopProps.getCost, false);
+                });
 
             obj.AddGameMenu("town_mod_troop_type", "The guild leader shows you their list of mercenaries and ask which you want. She will send the ones you paid for to wait by the gates for when you leave town.", null);
 
-            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay initial cost of " + cost + " denars", 
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay {COST} denars", 
                 (MenuCallbackArgs args) => 
                 {
+                    TroopProperties troopProps;
+                    troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
+                    MBTextManager.SetTextVariable("COST", troopProps.getCost, false);
                     args.optionLeaveType = GameMenuOption.LeaveType.Trade;
-                    if (cost >= Hero.MainHero.Gold)
+                    if (troopProps.getCost >= Hero.MainHero.Gold)
                     {
                         return false;
                     }
@@ -85,6 +92,9 @@ namespace BasiliskTroops
                 }, 
                 (MenuCallbackArgs args) => 
                 {
+                    TroopProperties troopProps;
+                    troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
+                    int cost = troopProps.getCost;
                     if (cost <= Hero.MainHero.Gold) 
                     {
                         GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);

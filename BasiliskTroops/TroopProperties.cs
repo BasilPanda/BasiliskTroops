@@ -41,14 +41,20 @@ namespace BasiliskTroops
             return Settlement.Find(this.settlementID);
         }
 
-        public int getCost()
+        public int getCost
         {
-            return (int)Math.Ceiling(getSelf().Town.Prosperity * 2);
+            get
+            {
+                return (int)Math.Ceiling(getSelf().Town.Prosperity * 2);
+            }
         }
         
-        public int getProsperity()
+        public int getProsperity
         {
-            return (int)Math.Ceiling(getSelf().Town.Prosperity);
+            get
+            {
+                return (int)Math.Ceiling(getSelf().Town.Prosperity);
+            }
         }
 
     }
