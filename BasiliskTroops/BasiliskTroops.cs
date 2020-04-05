@@ -59,7 +59,7 @@ namespace BasiliskTroops
         public void AddTroopDialog(CampaignGameStarter obj)
         {
 
-            obj.AddGameMenuOption("town", "info_troop_type", "Hire Basilisk Guild Troops", game_menu_just_add_recruit_conditional, game_menu_troop_type_on_consq, false, 5);
+            obj.AddGameMenuOption("town", "info_troop_type", "Hire Basilisk Guild Troops", game_menu_just_add_recruit_conditional, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("town_mod_pay"); }, false, 5);
 
             Town town = Settlement.CurrentSettlement.Town;
             int cost = (int)Math.Ceiling(town.Prosperity * 2);
@@ -79,13 +79,12 @@ namespace BasiliskTroops
                 }, 
                 (MenuCallbackArgs args) => 
                 {
-                    if (cost <= Hero.MainHero.Gold)
+                    if (cost <= Hero.MainHero.Gold) 
                     {
                         GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
                     }
                     GameMenu.SwitchToMenu("town_mod_troop_type");
                 });
-
 
             obj.AddGameMenuOption("town_mod_troop_type", "notpaying", "Nevermind", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
 
