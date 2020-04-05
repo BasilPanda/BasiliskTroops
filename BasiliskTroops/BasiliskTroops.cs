@@ -27,6 +27,7 @@ namespace BasiliskTroops
 
         public static string[] militiaTroopIDs = new string[]
         {
+            "mod_basilisk_trainee",
             "mod_basilisk_militia",
             "mod_basilisk_light_infantry",
             "mod_basilisk_heavy_infantry",
@@ -174,28 +175,24 @@ namespace BasiliskTroops
         {
             MobileParty party = new MobileParty();
 
-            int troopAmount = 0;
+            int troopProspModifier= 0;
             // Militia
             if (type == 0)
             {
-                troopAmount = (int)Math.Ceiling(town.Prosperity / 400);
+                troopProspModifier = (int)Math.Ceiling(town.Prosperity / 50);
             }
             // Nobles
             else
             {
-                troopAmount = (int)Math.Ceiling(town.Prosperity / 800);
+                troopProspModifier = (int)Math.Ceiling(town.Prosperity / 100);
             }
-
+            int troopAmount = 0;
             foreach (string id in troopIDs)
             {
-                if ((int)Math.Floor(troopAmount / 2f) >= 1)
+                troopAmount = (int)Math.Floor((double)troopProspModifier / CharacterObject.Find(id).Level);
+                if(troopAmount >= 1)
                 {
-                    troopAmount = (int)Math.Floor(troopAmount / 2f);
                     party.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount);
-                }
-                else
-                {
-                    break;
                 }
             }
             return party;
