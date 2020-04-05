@@ -140,6 +140,7 @@
     <Compile Include="BasiliskTroops.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasiliskTroopsSubmodule.cs" />
+    <Compile Include="TroopProperties.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
