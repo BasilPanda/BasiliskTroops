@@ -23,33 +23,33 @@ namespace BasiliskTroops
     {
 
         Dictionary<string, TroopProperties> troopDic = new Dictionary<string, TroopProperties>();
-
+        Random rand = new Random();
 
         public static string[] militiaTroopIDs = new string[]
         {
             "mod_basilisk_trainee",
             "mod_basilisk_militia",
             "mod_basilisk_light_infantry",
-            "mod_basilisk_heavy_infantry",
-            //"mod_basilisk_slayer",
-            "mod_basilisk_spearman",
-            //"mod_basilisk_armored_spearman",
             "mod_basilisk_skirmisher",
             "mod_basilisk_archer",
-            //"mod_basilisk_ranger",
+            "mod_basilisk_spearman",
             "mod_basilisk_light_cavalry",
-            //"mod_basilisk_vanguard"
+            "mod_basilisk_heavy_infantry",
+            "mod_basilisk_ranger",
+            "mod_basilisk_armored_spearman",
+            "mod_basilisk_slayer",
+            "mod_basilisk_vanguard"
         };
 
         public static string[] nobleTroopIDs = new string[]
         {
             "mod_basilisk_nobleman",
             "mod_basilisk_squire",
-            "mod_basilisk_knight"
-            //"mod_basilisk_master",
-            //"mod_basilisk_grandmaster"
+            "mod_basilisk_knight",
+            "mod_basilisk_master",
+            "mod_basilisk_grandmaster"
         };
-        
+
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
             populateGuilds();
@@ -67,23 +67,61 @@ namespace BasiliskTroops
 
             obj.AddGameMenuOption("town", "info_troop_type", "Hire Basilisk Guild Troops", game_menu_just_add_recruit_conditional, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("town_mod_pay"); }, false, 5);
 
-            obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its mercenaries, both commoners and nobles, in every town for quite the coin. The guild leader tells you that their mercenaries travel among their locations daily." +
-                " She also tells you that there is a daily upfront fee of {COST} denars here just to view their mercenaries. It is however the only fee besides upkeep cost you pay for. You do not need to pay per mercenary.",
+            obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its powerful mercenaries, both commoners and nobles, in every town for quite the coin. " +
+                "The guild manager tells you that their mercenaries favor more wealthy places." +
+                " She also tells you that there is a daily upfront fee of {COST} denars here just to view available mercenaries. " +
+                "She then tells you that they also offer immediate contingents for the extreme wealthy. The larger contingents are of higher quality.",
                 (MenuCallbackArgs args) =>
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
                     MBTextManager.SetTextVariable("COST", troopProps.getCost, false);
+                    if(Clan.PlayerClan.Tier == 0)
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "No one here has heard of you before", false);
+                    }
                 });
 
-            obj.AddGameMenu("town_mod_troop_type", "The guild leader shows you their list of mercenaries and ask which you want. She will send the ones you paid for to wait by the gates for when you leave town.", null);
+            obj.AddGameMenu("town_mod_troop_type", "The guild manager goes to the back and after a while comes back to the front with two lists of available mercenaries. " +
+                "{RENOWN_STATUS} " +
+                "The ones you paid for will wait by the gates.", 
+                (MenuCallbackArgs args) =>
+                {
+                    if (Clan.PlayerClan.Tier == 0)
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "She tells you that no one here has heard of you so not many are willing to join.", false);
+                    } else if (Clan.PlayerClan.Tier == 1)
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "She tells you that she cannot remember you or your face but some of their trainees were talking about you.", false);
+                    }
+                    else if (Clan.PlayerClan.Tier == 2)
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "She thanks you for waiting and tells you that some of their trainees were waiting for you to come again.", false);
+                    }
+                    else if (Clan.PlayerClan.Tier == 3)
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "She thanks you for waiting and tells you that some of their experienced members were discussing your exploits from time to time.", false);
+                    }
+                    else if (Clan.PlayerClan.Tier == 4)
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "She thanks you for your patronage and tells you that noblemen are declining other requests to join you instead.", false);
+                    }
+                    else if (Clan.PlayerClan.Tier == 5)
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "She bows and thanks you for your continued patronage. She tells you that there is now a waiting list to get on the list to join your party.", false);
+                    }
+                    else
+                    {
+                        MBTextManager.SetTextVariable("RENOWN_STATUS", "She bows and thanks you for your continued patronage. The whole guild is entirely maintained with your money at this point.", false);
+                    }
+                });
 
-            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay {COST} denars",
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay {DAILY_COST} denars to see daily troops",
                 (MenuCallbackArgs args) =>
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
-                    MBTextManager.SetTextVariable("COST", troopProps.getCost, false);
+                    MBTextManager.SetTextVariable("DAILY_COST", troopProps.getCost, false);
                     args.optionLeaveType = GameMenuOption.LeaveType.Trade;
                     if (troopProps.getCost >= Hero.MainHero.Gold || troopProps.paid)
                     {
@@ -105,6 +143,76 @@ namespace BasiliskTroops
                     GameMenu.SwitchToMenu("town_mod_troop_type");
                 });
 
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee_5", "Pay {COST_5} denars for 5 troops",
+                (MenuCallbackArgs args) =>
+                {
+                    int cost = (int)Math.Ceiling(3000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 1000);
+                    MBTextManager.SetTextVariable("COST_5", cost, false);
+                    args.optionLeaveType = GameMenuOption.LeaveType.Trade;
+                    if (cost >= Hero.MainHero.Gold)
+                    {
+                        return false;
+                    }
+                    return true;
+                },
+                (MenuCallbackArgs args) =>
+                {
+                    int cost = (int)Math.Ceiling(3000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 1000);
+                    if (cost <= Hero.MainHero.Gold)
+                    {
+                        GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
+                        giveTroops(5);
+                    }
+                });
+
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee_15", "Pay {COST_15} denars for 15 troops",
+                (MenuCallbackArgs args) =>
+                {
+                    int cost = (int)Math.Ceiling(15000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 2000);
+                    MBTextManager.SetTextVariable("COST_15", cost, false);
+                    args.optionLeaveType = GameMenuOption.LeaveType.Trade;
+                    if (cost >= Hero.MainHero.Gold)
+                    {
+                        return false;
+                    }
+                    return true;
+                },
+                (MenuCallbackArgs args) =>
+                {
+                    int cost = (int)Math.Ceiling(15000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 2000);
+                    if (cost <= Hero.MainHero.Gold)
+                    {
+                        GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
+                        giveTroops(15);
+                    }
+                });
+
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee_25", "Pay {COST_25} denars for 25 troops",
+                (MenuCallbackArgs args) =>
+                {
+                    int cost = (int)Math.Ceiling(30000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 3000);
+                    MBTextManager.SetTextVariable("COST_25", cost, false);
+                    args.optionLeaveType = GameMenuOption.LeaveType.Trade;
+                    if (cost >= Hero.MainHero.Gold)
+                    {
+                        return false;
+                    }
+                    return true;
+                },
+                (MenuCallbackArgs args) =>
+                {
+                    int cost = (int)Math.Ceiling(30000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 3000);
+                    if (cost <= Hero.MainHero.Gold)
+                    {
+                        GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
+                        giveTroops(25);
+                    } else
+                    {
+                        
+                        GameMenu.SwitchToMenu("town");
+                    }
+                });
+
             obj.AddGameMenuOption("town_mod_pay", "already_paid", "View troops",
                 (MenuCallbackArgs args) =>
                 {
@@ -116,7 +224,7 @@ namespace BasiliskTroops
                         return true;
                     }
                     return false;
-                }, 
+                },
                 (MenuCallbackArgs args) =>
                 {
                     GameMenu.SwitchToMenu("town_mod_troop_type");
@@ -153,7 +261,7 @@ namespace BasiliskTroops
             this.troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProperties);
             PartyScreenManager.OpenScreenAsManageTroops(troopProperties.militia);
         }
-        
+
         public void conversation_noble_on_consequence(MenuCallbackArgs args)
         {
             TroopProperties troopProperties;
@@ -165,9 +273,9 @@ namespace BasiliskTroops
         public void trackDaily()
         {
             string id = "";
-            foreach(Settlement settlement in Settlement.All)
+            foreach (Settlement settlement in Settlement.All)
             {
-                if(settlement.IsTown)
+                if (settlement.IsTown)
                 {
                     id = settlement.StringId;
                     TroopProperties townTroopProperties;
@@ -183,12 +291,11 @@ namespace BasiliskTroops
         // Populates all the guilds in every town
         private void populateGuilds()
         {
-            if(troopDic.Count == 0)
+            if (troopDic.Count == 0)
             {
-                Random random = new Random();
-                foreach(Settlement settlement in Settlement.All)
+                foreach (Settlement settlement in Settlement.All)
                 {
-                    if(settlement.IsTown)
+                    if (settlement.IsTown)
                     {
                         troopDic.Add(settlement.StringId, new TroopProperties(settlement.StringId, generateParty(settlement.Town, militiaTroopIDs, 0), generateParty(settlement.Town, nobleTroopIDs, 1)));
                     }
@@ -201,35 +308,141 @@ namespace BasiliskTroops
         {
             MobileParty party = new MobileParty();
 
-            int troopProspModifier= 0;
+            int troopProspModifier = 0;
             // Militia
             if (type == 0)
             {
                 TextObject text = new TextObject("Basilisk Mercenaries");
                 party.Name = text;
-                troopProspModifier = (int)Math.Floor(town.Prosperity / 400 + Clan.PlayerClan.Renown * 0.05);
             }
             // Nobles
             else
             {
                 TextObject text = new TextObject("Basilisk Noble Mercenaries");
                 party.Name = text;
-                troopProspModifier = (int)Math.Floor(town.Prosperity / 800 + Clan.PlayerClan.Renown * 0.05);
             }
+            troopProspModifier = (int)Math.Floor(town.Prosperity / 100 + Clan.PlayerClan.Renown * 0.05);
             int troopAmount = 0;
+            CharacterObject unit;
             foreach (string id in troopIDs)
             {
-                troopAmount = (int)Math.Floor((double)troopProspModifier / CharacterObject.Find(id).Level);
-                if(troopAmount > 15)
+                unit = CharacterObject.Find(id);
+                if (unit.Level > 21)
                 {
-                    troopAmount = 15;
+                    continue;
                 }
-                if(troopAmount >= 1)
+                randomGender(unit);
+                troopAmount = (int)Math.Floor((double)troopProspModifier / unit.Level);
+                troopAmount = balanceTroops(unit.Level, troopAmount);
+                if (troopAmount >= 1)
                 {
-                    party.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount, true);
+                    troopAmount = rand.Next((int)Math.Ceiling((double)troopAmount / 2), troopAmount + 1);
+                    party.AddElementToMemberRoster(unit, troopAmount, true);
                 }
             }
             return party;
+        }
+
+        // Randomizes gender
+        public void randomGender(CharacterObject unit)
+        {
+            if (rand.Next(0, 2) == 1)
+            {
+                unit.UpdatePlayerCharacterBodyProperties(unit.GetBodyProperties(unit.GetFirstEquipment(false)), true);
+            } else
+            {
+                unit.UpdatePlayerCharacterBodyProperties(unit.GetBodyProperties(unit.GetFirstEquipment(false)), false);
+            }
+        }
+
+        // Allows for 5, 15, 25
+        public void giveTroops(int troopAmount)
+        {
+            int amount = 0;
+            CharacterObject unit;
+            if (troopAmount == 5)
+            {
+                foreach(string id in militiaTroopIDs)
+                {
+                    unit = CharacterObject.Find(id);
+                    if (unit.Level < 17 && troopAmount > 0)
+                    {
+                        amount = rand.Next(troopAmount / 2, troopAmount);
+                        randomGender(unit);
+                        MobileParty.MainParty.AddElementToMemberRoster(unit, amount);
+                        troopAmount -= amount;
+                    }
+                }
+                if (troopAmount > 0)
+                {
+                    MobileParty.MainParty.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_militia"), troopAmount);
+                }
+            }
+            else if (troopAmount == 15)
+            {
+                MobileParty.MainParty.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_nobleman"), 1);
+                troopAmount--;
+                foreach (string id in militiaTroopIDs)
+                {
+                    unit = CharacterObject.Find(id);
+                    if (unit.Level < 30 && troopAmount > 0)
+                    {
+                        amount = rand.Next(troopAmount / 2, troopAmount);
+                        MobileParty.MainParty.AddElementToMemberRoster(unit, amount);
+                        troopAmount -= amount;
+                    }
+                }
+                if (troopAmount > 0)
+                {
+                    MobileParty.MainParty.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_militia"), troopAmount);
+                }
+            }
+            else
+            {
+                MobileParty.MainParty.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_knight"), 1);
+                MobileParty.MainParty.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_squire"), 1);
+                MobileParty.MainParty.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_nobleman"), 1);
+                troopAmount -= 3;
+                foreach (string id in militiaTroopIDs)
+                {
+                    unit = CharacterObject.Find(id);
+                    if (unit.Level < 40 && troopAmount > 0)
+                    {
+                        amount = rand.Next(troopAmount/2, troopAmount);
+                        MobileParty.MainParty.AddElementToMemberRoster(unit, amount);
+                        troopAmount -= amount;
+                    }
+                }
+                if (troopAmount > 0)
+                {
+                    MobileParty.MainParty.AddElementToMemberRoster(CharacterObject.Find("mod_basilisk_militia"), troopAmount);
+                }
+            }
+
+        }
+
+        public int balanceTroops(int level, int troopAmount)
+        {
+            if (level < 12 && troopAmount > (int)Math.Floor(6 + Clan.PlayerClan.Renown * 0.0075))
+            {
+                troopAmount = (int)Math.Floor(12 + Clan.PlayerClan.Renown * 0.0075);
+            }
+            else if(level < 17 && troopAmount > (int)Math.Floor(4 + Clan.PlayerClan.Renown * 0.006))
+            {
+                troopAmount = (int)Math.Floor(6 + Clan.PlayerClan.Renown * 0.006);
+            }
+            else if(level < 22 && troopAmount > (int)Math.Floor(2 + Clan.PlayerClan.Renown * 0.005))
+            {
+                troopAmount = (int)Math.Floor(3 + Clan.PlayerClan.Renown * 0.005);
+            }
+            else if(level < 26 && troopAmount > (int)Math.Floor(1 + Clan.PlayerClan.Renown * 0.0025))
+            {
+                troopAmount = (int)Math.Floor(1 + Clan.PlayerClan.Renown * 0.0025);
+            } else
+            {
+                return 0;
+            }
+            return troopAmount;
         }
 
         // Loads the mod data

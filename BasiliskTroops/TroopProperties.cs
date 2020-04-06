@@ -49,7 +49,18 @@ namespace BasiliskTroops
         {
             get
             {
-                return (int)Math.Ceiling(getSelf().Town.Prosperity * 2);
+                float totalCost = 0;
+                totalCost += this.militia.Party.NumberOfMenWithoutHorse * 50 + this.militia.Party.NumberOfMenWithHorse * 100;
+                totalCost += this.nobles.Party.NumberOfAllMembers * 250;
+                totalCost += (int)Math.Ceiling(getProsperity * 2 + Clan.PlayerClan.Renown * 1.5);
+
+                // 10% discount for player if they own the settlement
+                if (getSelf().OwnerClan == Clan.PlayerClan)
+                {
+                    totalCost *= 0.9f;
+                }
+
+                return (int)Math.Ceiling(totalCost);
             }
         }
         
