@@ -31,23 +31,23 @@ namespace BasiliskTroops
             "mod_basilisk_militia",
             "mod_basilisk_light_infantry",
             "mod_basilisk_heavy_infantry",
-            "mod_basilisk_slayer",
+            //"mod_basilisk_slayer",
             "mod_basilisk_spearman",
-            "mod_basilisk_armored_spearman",
+            //"mod_basilisk_armored_spearman",
             "mod_basilisk_skirmisher",
             "mod_basilisk_archer",
-            "mod_basilisk_ranger",
+            //"mod_basilisk_ranger",
             "mod_basilisk_light_cavalry",
-            "mod_basilisk_vanguard"
+            //"mod_basilisk_vanguard"
         };
 
         public static string[] nobleTroopIDs = new string[]
         {
             "mod_basilisk_nobleman",
             "mod_basilisk_squire",
-            "mod_basilisk_knight",
-            "mod_basilisk_master",
-            "mod_basilisk_grandmaster"
+            "mod_basilisk_knight"
+            //"mod_basilisk_master",
+            //"mod_basilisk_grandmaster"
         };
         
         private void OnSessionLaunched(CampaignGameStarter obj)
@@ -66,10 +66,10 @@ namespace BasiliskTroops
         {
 
             obj.AddGameMenuOption("town", "info_troop_type", "Hire Basilisk Guild Troops", game_menu_just_add_recruit_conditional, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("town_mod_pay"); }, false, 5);
-            
-            obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its mercenaries, both commoners and nobles, in every town for quite the coin. The guild leader tells you that their mercenaries travel among their locations weekly." +
-                " She also tells you that there is a recurring upfront fee of {COST} denars here just to view their mercenaries. It is however the only fee besides upkeep cost you pay for. You do not need to pay per merc.",
-                (MenuCallbackArgs args) => 
+
+            obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its mercenaries, both commoners and nobles, in every town for quite the coin. The guild leader tells you that their mercenaries travel among their locations daily." +
+                " She also tells you that there is a daily upfront fee of {COST} denars here just to view their mercenaries. It is however the only fee besides upkeep cost you pay for. You do not need to pay per mercenary.",
+                (MenuCallbackArgs args) =>
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
@@ -78,36 +78,56 @@ namespace BasiliskTroops
 
             obj.AddGameMenu("town_mod_troop_type", "The guild leader shows you their list of mercenaries and ask which you want. She will send the ones you paid for to wait by the gates for when you leave town.", null);
 
-            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay {COST} denars", 
-                (MenuCallbackArgs args) => 
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay {COST} denars",
+                (MenuCallbackArgs args) =>
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
                     MBTextManager.SetTextVariable("COST", troopProps.getCost, false);
                     args.optionLeaveType = GameMenuOption.LeaveType.Trade;
-                    if (troopProps.getCost >= Hero.MainHero.Gold)
+                    if (troopProps.getCost >= Hero.MainHero.Gold || troopProps.paid)
                     {
                         return false;
                     }
                     return true;
-                }, 
-                (MenuCallbackArgs args) => 
+                },
+                (MenuCallbackArgs args) =>
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
                     int cost = troopProps.getCost;
-                    if (cost <= Hero.MainHero.Gold) 
+                    if (cost <= Hero.MainHero.Gold)
                     {
                         GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
+                        troopProps.paid = true;
+                        troopDic[Settlement.CurrentSettlement.StringId] = troopProps;
                     }
                     GameMenu.SwitchToMenu("town_mod_troop_type");
                 });
 
-            obj.AddGameMenuOption("town_mod_pay", "notpaying", "Nevermind", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
+            obj.AddGameMenuOption("town_mod_pay", "already_paid", "View troops",
+                (MenuCallbackArgs args) =>
+                {
+                    args.optionLeaveType = GameMenuOption.LeaveType.Recruit;
+                    TroopProperties troopProps;
+                    troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
+                    if (troopProps.paid)
+                    {
+                        return true;
+                    }
+                    return false;
+                }, 
+                (MenuCallbackArgs args) =>
+                {
+                    GameMenu.SwitchToMenu("town_mod_troop_type");
+                });
+
+
+            obj.AddGameMenuOption("town_mod_pay", "notpaying", "Leave", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
 
             obj.AddGameMenuOption("town_mod_troop_type", "militia_type", "Look at the Commoners list", this.game_menu_just_add_recruit_conditional, this.conversation_miltia_on_consequence);
             obj.AddGameMenuOption("town_mod_troop_type", "noble_type", "Look at the Nobles list", this.game_menu_just_add_recruit_conditional, this.conversation_noble_on_consequence);
-            obj.AddGameMenuOption("town_mod_troop_type", "mod_leave", "I'm done looking", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
+            obj.AddGameMenuOption("town_mod_troop_type", "mod_leave", "Finished looking", this.game_menu_just_add_leave_conditional, this.game_menu_switch_to_town_menu);
         }
 
         private void game_menu_switch_to_town_menu(MenuCallbackArgs args)
@@ -154,6 +174,7 @@ namespace BasiliskTroops
                     troopDic.TryGetValue(id, out townTroopProperties);
                     townTroopProperties.militia = generateParty(townTroopProperties.getSelf().Town, militiaTroopIDs, 0);
                     townTroopProperties.nobles = generateParty(townTroopProperties.getSelf().Town, nobleTroopIDs, 1);
+                    townTroopProperties.paid = false;
                     troopDic[id] = townTroopProperties;
                 }
             }
@@ -184,20 +205,28 @@ namespace BasiliskTroops
             // Militia
             if (type == 0)
             {
-                troopProspModifier = (int)Math.Ceiling(town.Prosperity / 50);
+                TextObject text = new TextObject("Basilisk Mercenaries");
+                party.Name = text;
+                troopProspModifier = (int)Math.Floor(town.Prosperity / 400 + Clan.PlayerClan.Renown * 0.05);
             }
             // Nobles
             else
             {
-                troopProspModifier = (int)Math.Ceiling(town.Prosperity / 100);
+                TextObject text = new TextObject("Basilisk Noble Mercenaries");
+                party.Name = text;
+                troopProspModifier = (int)Math.Floor(town.Prosperity / 800 + Clan.PlayerClan.Renown * 0.05);
             }
             int troopAmount = 0;
             foreach (string id in troopIDs)
             {
                 troopAmount = (int)Math.Floor((double)troopProspModifier / CharacterObject.Find(id).Level);
+                if(troopAmount > 15)
+                {
+                    troopAmount = 15;
+                }
                 if(troopAmount >= 1)
                 {
-                    party.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount);
+                    party.AddElementToMemberRoster(CharacterObject.Find(id), troopAmount, true);
                 }
             }
             return party;

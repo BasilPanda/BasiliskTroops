@@ -29,11 +29,15 @@ namespace BasiliskTroops
         [SaveableField(3)]
         public MobileParty nobles;
 
-        public TroopProperties(string settlementID, MobileParty militia, MobileParty nobles)
+        [SaveableField(4)]
+        public bool paid;
+
+        public TroopProperties(string settlementID, MobileParty militia, MobileParty nobles, bool paid = false)
         {
             this.settlementID = settlementID;
             this.militia = militia;
             this.nobles = nobles;
+            this.paid = false;
         }
 
         public Settlement getSelf()
