@@ -1,0 +1,12 @@
+<SPCultures>
+  <Culture id="basilisk_culture"
+           name="Basilisk Guild"
+           elite_basic_troop="NPCCharacter.mod_basilisk_nobleman"
+           basic_troop="NPCCharacter.mod_basilisk_trainee"
+		   melee_militia_troop="NPCCharacter.mod_basilisk_light_infantry"
+           ranged_militia_troop="NPCCharacter.mod_basilisk_skirmisher"
+           melee_elite_militia_troop="NPCCharacter.mod_basilisk_heavy_infantry"
+           ranged_elite_militia_troop="NPCCharacter.mod_basilisk_archer"
+           default_party_template="PartyTemplate.mod_basiliskguild_hero_party"
+           militia_party_template="PartyTemplate.mod_basiliskguild_militia_party" />
+</SPCultures>

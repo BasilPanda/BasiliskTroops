@@ -147,6 +147,11 @@
     <Compile Include="BasiliskTroopsSubmodule.cs" />
     <Compile Include="TroopProperties.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="XML\basiliskculture.xml" />
+    <Content Include="XML\basiliskpartytemplate.xml" />
+    <Content Include="XML\basilisktroops.xml" />
+    <Content Include="XML\basilisktroopsfemale.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

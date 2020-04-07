@@ -1,0 +1,1755 @@
+<NPCCharacters>
+<!-- Melee Troops -->
+  <NPCCharacter id="mod_f_basilisk_trainee"
+                default_group="Infantry"
+				is_female="true"
+                level="6"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t2"
+                name="{=0000001}Basilisk Trainee"
+                occupation="Soldier"
+                is_basic_troop="true"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.25"
+						build="0.25"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="30" 
+						 weight="0.6" 
+						 build="0.6"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="20" />
+      <skill id="Riding"
+             value="5" />
+      <skill id="OneHanded"
+             value="20" />
+      <skill id="TwoHanded"
+             value="20" />
+      <skill id="Polearm"
+             value="20" />
+      <skill id="Bow"
+             value="20" />
+      <skill id="Crossbow"
+             value="20" />
+      <skill id="Throwing"
+             value="20" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.aserai_mace_2_t2" />
+	  <equipment slot="Item1"
+                 id="Item.leather_bound_kite_shield" />
+      <equipment slot="Head"
+                 id="Item.imperial_cloth_coif" />
+      <equipment slot="Body"
+                 id="Item.footmans_tunic" />
+      <equipment slot="Leg"
+                 id="Item.leather_shoes" />
+      <equipment slot="Gloves"
+                 id="Item.strapped_leather_bracers" />
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.aserai_mace_1_t2" />
+	  <equipment slot="Item1"
+                 id="Item.leather_bound_kite_shield" />
+      <equipment slot="Head"
+                 id="Item.leather_cap" />
+      <equipment slot="Body"
+                 id="Item.tunic_with_shoulder_pads" />
+      <equipment slot="Leg"
+                 id="Item.leather_shoes" />
+      <equipment slot="Gloves"
+                 id="Item.strapped_leather_bracers" /> 
+	  <equipment slot="Cape"
+                 id="Item.scarf" />	
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.aserai_mace_1_t2" />
+	  <equipment slot="Item1"
+                 id="Item.leather_bound_kite_shield" />
+      <equipment slot="Head"
+                 id="Item.leather_cap" />
+      <equipment slot="Body"
+                 id="Item.tunic_with_shoulder_pads" />
+      <equipment slot="Leg"
+                 id="Item.leather_shoes" />
+      <equipment slot="Gloves"
+                 id="Item.strapped_leather_bracers" /> 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.campaign_banner_small" />
+	  <equipment slot="Item1"
+                 id="Item.leather_bound_kite_shield" />
+      <equipment slot="Head"
+                 id="Item.leather_cap" />
+      <equipment slot="Body"
+                 id="Item.tunic_with_shoulder_pads" />
+      <equipment slot="Leg"
+                 id="Item.leather_shoes" />
+      <equipment slot="Gloves"
+                 id="Item.strapped_leather_bracers" /> 
+	  <equipment slot="Cape"
+                 id="Item.scarf" />	
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_militia" />
+	  <upgrade_target id="NPCCharacter.mod_f_basilisk_light_cavalry" />
+    </upgrade_targets>
+  </NPCCharacter>
+  
+  <NPCCharacter id="mod_f_basilisk_militia"
+                default_group="Infantry"
+				is_female="true"
+                level="11"
+                civilianTemplate="NPCCharacter.empire_troop_civilian_template_t2"
+                name="{=0000002}Basilisk Militia"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.25"
+						build="0.25"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="30" 
+						 weight="0.75" 
+						 build="0.75"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="50" />
+      <skill id="Riding"
+             value="20" />
+      <skill id="OneHanded"
+             value="50" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.empire_sword_1_t2" />
+	  <equipment slot="Item1"
+                 id="Item.leather_round_shield" />			 
+      <equipment slot="Head"
+                 id="Item.imperial_leather_coif" />
+      <equipment slot="Body"
+                 id="Item.padded_cloth_with_strips" />
+      <equipment slot="Leg"
+                 id="Item.strapped_leather_boots" />
+      <equipment slot="Gloves"
+                 id="Item.buttoned_leather_bracers" />
+	  <equipment slot="Cape"
+                 id="Item.woven_leather_shoulders" />	
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_sword_1_t2" />
+	  <equipment slot="Item1"
+                 id="Item.leather_round_shield" />	
+	  <equipment slot="Item2"
+                 id="Item.campaign_banner_small" />				 
+      <equipment slot="Head"
+                 id="Item.imperial_leather_coif" />
+      <equipment slot="Body"
+                 id="Item.padded_cloth_with_strips" />
+      <equipment slot="Leg"
+                 id="Item.strapped_leather_boots" />
+      <equipment slot="Gloves"
+                 id="Item.buttoned_leather_bracers" />
+	  <equipment slot="Cape"
+                 id="Item.woven_leather_shoulders" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.empire_sword_1_t2" />
+	  <equipment slot="Item1"
+                 id="Item.leather_round_shield" />			 
+      <equipment slot="Head"
+                 id="Item.imperial_leather_coif" />
+      <equipment slot="Body"
+                 id="Item.padded_cloth_with_strips" />
+      <equipment slot="Leg"
+                 id="Item.strapped_leather_boots" />
+      <equipment slot="Gloves"
+                 id="Item.buttoned_leather_bracers" />
+	  <equipment slot="Cape"
+                 id="Item.woven_leather_shoulders" />	
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_light_infantry" />
+	  <upgrade_target id="NPCCharacter.mod_f_basilisk_skirmisher" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_light_infantry"
+                default_group="Infantry"
+				is_female="true"
+                level="16"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000003}Basilisk Light Infantry"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.35"
+						build="0.35"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="35" 
+						 weight="0.84" 
+						 build="0.84"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="80" />
+      <skill id="Riding"
+             value="40" />
+      <skill id="OneHanded"
+             value="80" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="80" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.empire_sword_3_t3" />
+	  <equipment slot="Item1"
+                 id="Item.reinforced_kite_shield" />	
+	  <equipment slot="Item2"
+                 id="Item.generic_javelin_1_t3" /> 
+      <equipment slot="Head"
+                 id="Item.leatherlame_nasalhelm_over_imperial_leather" />
+      <equipment slot="Body"
+                 id="Item.basic_imperial_leather_armor" />
+      <equipment slot="Leg"
+                 id="Item.plated_strip_boots" />
+      <equipment slot="Gloves"
+                 id="Item.plated_strip_gauntlets" />
+	  <equipment slot="Cape"
+                 id="Item.empire_warrior_padded_armor_shoulder" />			 
+    </equipmentSet>
+	<equipmentSet>
+	  <equipment slot="Item0"
+				 id="Item.empire_sword_3_t3" />
+	  <equipment slot="Item1"
+				 id="Item.reinforced_kite_shield" />			
+	  <equipment slot="Item2"
+				 id="Item.generic_javelin_1_t3" /> 
+	  <equipment slot="Item3"
+                 id="Item.campaign_banner_small" />						 
+	  <equipment slot="Head"
+				 id="Item.leatherlame_nasalhelm_over_imperial_leather" />
+	  <equipment slot="Body"
+				 id="Item.basic_imperial_leather_armor" />
+	  <equipment slot="Leg"
+				 id="Item.plated_strip_boots" />
+	  <equipment slot="Gloves"
+				 id="Item.plated_strip_gauntlets" />
+	  <equipment slot="Cape"
+				 id="Item.empire_warrior_padded_armor_shoulder" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.empire_sword_3_t3" />
+	  <equipment slot="Item1"
+                 id="Item.reinforced_kite_shield" />	
+	  <equipment slot="Item2"
+                 id="Item.generic_javelin_1_t3" />			 
+      <equipment slot="Head"
+                 id="Item.leatherlame_nasalhelm_over_imperial_leather" />
+      <equipment slot="Body"
+                 id="Item.basic_imperial_leather_armor" />
+      <equipment slot="Leg"
+                 id="Item.plated_strip_boots" />
+      <equipment slot="Gloves"
+                 id="Item.plated_strip_gauntlets" />
+	  <equipment slot="Cape"
+                 id="Item.empire_warrior_padded_armor_shoulder" />			 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_heavy_infantry" />
+	  <upgrade_target id="NPCCharacter.mod_f_basilisk_spearman" />
+    </upgrade_targets>
+  </NPCCharacter>
+   <NPCCharacter id="mod_f_basilisk_heavy_infantry"
+                default_group="Infantry"
+				is_female="true"
+                level="21"
+                civilianTemplate="NPCCharacter.empire_troop_civilian_template_t1"
+                name="{=0000004}Basilisk Heavy Infantry"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.4"
+						build="0.4"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.8" 
+						 build="0.8"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="110" />
+      <skill id="Riding"
+             value="40" />
+      <skill id="OneHanded"
+             value="110" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="110" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_sword_3_t4" />
+	  <equipment slot="Item1"
+                 id="Item.southern_oval_shield" />		
+	  <equipment slot="Item2"
+				 id="Item.generic_javelin_1_t3" />
+      <equipment slot="Item3"
+				 id="Item.generic_javelin_1_t3" />
+      <equipment slot="Body"
+                 id="Item.imperial_lamellar" />
+      <equipment slot="Gloves"
+                 id="Item.decorated_imperial_gauntlets" />
+      <equipment slot="Leg"
+                 id="Item.decorated_imperial_boots" />
+      <equipment slot="Head"
+                 id="Item.ironlame_nasalhelm_over_imperial_coif" />
+      <equipment slot="Cape"
+                 id="Item.pauldron_cape_a" />		 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_sword_3_t4" />
+	  <equipment slot="Item1"
+                 id="Item.southern_oval_shield" />			
+	  <equipment slot="Item2"
+				 id="Item.generic_javelin_1_t3" />
+      <equipment slot="Item3"
+				 id="Item.generic_javelin_1_t3" />					 
+      <equipment slot="Body"
+                 id="Item.imperial_lamellar" />
+      <equipment slot="Gloves"
+                 id="Item.decorated_imperial_gauntlets" />
+      <equipment slot="Leg"
+                 id="Item.decorated_imperial_boots" />
+      <equipment slot="Head"
+                 id="Item.ironlame_nasalhelm_over_imperial_coif" />
+      <equipment slot="Cape"
+                 id="Item.imperial_studded_strip_shoulders" /> 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_slayer" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_slayer"
+                default_group="Infantry"
+				is_female="true"
+                level="36"
+                civilianTemplate="NPCCharacter.empire_troop_civilian_template_t2"
+                name="{=0000005}Basilisk Slayer"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="40" 
+						weight="0.5"
+						build="0.5"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.6" 
+						 build="0.84"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="140" />
+      <skill id="Riding"
+             value="80" />
+      <skill id="OneHanded"
+             value="180" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="180" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_sword_5_t5" />
+	  <equipment slot="Item1"
+                 id="Item.emirs_oval_shield" />	
+	  <equipment slot="Item2"
+				 id="Item.generic_javelin_1_t3" />
+      <equipment slot="Item3"
+				 id="Item.generic_javelin_1_t3" />				 
+      <equipment slot="Head"
+                 id="Item.heavy_nasalhelm_over_imperial_mail" />
+      <equipment slot="Cape"
+                 id="Item.studded_imperial_neckguard" />
+      <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Gloves"
+                 id="Item.lamellar_plate_gauntlets" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />		 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_sword_5_t5" />
+	  <equipment slot="Item1"
+                 id="Item.emirs_oval_shield" />
+	  <equipment slot="Item2"
+				 id="Item.western_javelin_3_t4" />
+      <equipment slot="Item3"
+				 id="Item.western_javelin_3_t4" />
+      <equipment slot="Head"
+                 id="Item.heavy_nasalhelm_over_imperial_mail" />
+      <equipment slot="Cape"
+                 id="Item.pauldron_cape_a" />
+      <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Gloves"
+                 id="Item.lamellar_plate_gauntlets" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />		 
+    </equipmentSet>
+	<upgrade_targets></upgrade_targets>
+  </NPCCharacter>
+   <NPCCharacter id="mod_f_basilisk_spearman"
+                default_group="Infantry"
+				is_female="true"
+                level="21"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t3"
+                name="{=0000006}Basilisk Spearman"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.35"
+						build="0.35"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.6" 
+						 build="0.6"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="110" />
+      <skill id="Riding"
+             value="40" />
+      <skill id="OneHanded"
+             value="100" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="125" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+    <equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.western_spear_4_t4" />
+	  <equipment slot="Item1"
+                 id="Item.reinforced_kite_shield" />
+	  <equipment slot="Item2"
+				 id="Item.empire_sword_1_t2" />		 
+      <equipment slot="Body"
+                 id="Item.imperial_lamellar" />
+      <equipment slot="Gloves"
+                 id="Item.padded_mitten" />
+      <equipment slot="Leg"
+                 id="Item.plated_strip_boots" />
+      <equipment slot="Head"
+                 id="Item.imperial_mail_coif" />
+      <equipment slot="Cape"
+                 id="Item.imperial_studded_strip_shoulders" />		 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.eastern_spear_4_t4" />
+	  <equipment slot="Item1"
+                 id="Item.reinforced_kite_shield" />		
+	  <equipment slot="Item2"
+				 id="Item.empire_sword_1_t2" />
+      <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Gloves"
+                 id="Item.padded_mitten" />
+      <equipment slot="Leg"
+                 id="Item.plated_strip_boots" />
+      <equipment slot="Head"
+                 id="Item.imperial_mail_coif" />
+      <equipment slot="Cape"
+                 id="Item.imperial_studded_strip_shoulders" /> 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_armored_spearman" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_armored_spearman"
+                default_group="Infantry"
+				is_female="true"
+                level="31"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000007}Basilisk Armored Spearman"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.35"
+						build="0.35"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.6" 
+						 build="0.6"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="125" />
+      <skill id="Riding"
+             value="5" />
+      <skill id="OneHanded"
+             value="125" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="180" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.eastern_spear_5_t5" />
+	  <equipment slot="Item1"
+                 id="Item.pavise_shield" />
+	  <equipment slot="Item2"
+                 id="Item.empire_sword_2_t3" />						 
+      <equipment slot="Head"
+                 id="Item.empire_helmet_with_metal_strips" />
+      <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />
+      <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Gloves"
+                 id="Item.decorated_imperial_gauntlets" />
+      <equipment slot="Leg"
+                 id="Item.decorated_imperial_boots" />		 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.northern_spear_4_t5" />
+	  <equipment slot="Item1"
+                 id="Item.pavise_shield" />	
+	  <equipment slot="Item2"
+                 id="Item.empire_sword_2_t3" />		
+      <equipment slot="Head"
+                 id="Item.empire_helmet_with_metal_strips" />
+      <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />
+      <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Gloves"
+                 id="Item.decorated_imperial_gauntlets" />
+      <equipment slot="Leg"
+                 id="Item.decorated_imperial_boots" />		 
+    </equipmentSet>
+	<upgrade_targets></upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_skirmisher"
+                default_group="Ranged"
+				is_female="true"
+                level="16"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t2"
+                name="{=0000008}Basilisk Skirmisher"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.25"
+						build="0.25"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="30" 
+						 weight="0.6" 
+						 build="0.6"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="75" />
+      <skill id="Riding"
+             value="70" />
+      <skill id="OneHanded"
+             value="70" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="100" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.composite_steppe_bow" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_sword_1_t2" />	
+      <equipment slot="Item2"
+                 id="Item.steppe_arrows" />
+      <equipment slot="Item3"
+                 id="Item.steppe_arrows" />				 
+      <equipment slot="Head"
+                 id="Item.arming_coif" />
+      <equipment slot="Body"
+                 id="Item.padded_cloth_with_strips" />
+      <equipment slot="Leg"
+                 id="Item.fine_town_boots" />
+      <equipment slot="Gloves"
+                 id="Item.buttoned_leather_bracers" />
+	  <equipment slot="Cape"
+                 id="Item.leather_lamellar_shoulders" />	
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.composite_steppe_bow" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_sword_1_t2" />	
+      <equipment slot="Item2"
+                 id="Item.steppe_arrows" />	
+      <equipment slot="Item3"
+                 id="Item.steppe_arrows" />				 
+      <equipment slot="Head"
+                 id="Item.arming_coif" />
+      <equipment slot="Body"
+                 id="Item.padded_cloth_with_strips" />
+      <equipment slot="Leg"
+                 id="Item.fine_town_boots" />
+      <equipment slot="Gloves"
+                 id="Item.buttoned_leather_bracers" />
+	  <equipment slot="Cape"
+                 id="Item.padded_leather_shoulders" />			 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_archer" />
+	  <upgrade_target id="NPCCharacter.mod_f_basilisk_crossbow" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_archer"
+                default_group="Ranged"
+				is_female="true"
+                level="21"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000009}Basilisk Archer"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.35"
+						build="0.35"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="40" 
+						 weight="0.7" 
+						 build="0.7"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="100" />
+      <skill id="Riding"
+             value="100" />
+      <skill id="OneHanded"
+             value="80" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="150" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.woodland_yew_bow" />
+	  <equipment slot="Item1"
+                 id="Item.empire_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.heavy_steppe_arrows" />
+      <equipment slot="Item3"
+                 id="Item.heavy_steppe_arrows" />
+      <equipment slot="Head"
+                 id="Item.battania_fur_helmet" />				 
+      <equipment slot="Body"
+                 id="Item.eastern_studded_leather" />
+      <equipment slot="Gloves"
+                 id="Item.roughtied_leather_bracers" />
+      <equipment slot="Leg"
+                 id="Item.folded_town_boots" />
+	  <equipment slot="Cape"
+                 id="Item.steppe_leather_shoulders" />	
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.woodland_yew_bow" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.heavy_steppe_arrows" />	
+      <equipment slot="Item3"
+                 id="Item.heavy_steppe_arrows" />				 
+      <equipment slot="Head"
+                 id="Item.battania_fur_helmet" />
+      <equipment slot="Body"
+                 id="Item.eastern_studded_leather" />
+      <equipment slot="Gloves"
+                 id="Item.roughtied_leather_bracers" />
+      <equipment slot="Leg"
+                 id="Item.folded_town_boots" />
+	  <equipment slot="Cape"
+                 id="Item.khuzait_leather_pauldron" />			 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_ranger" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_ranger"
+                default_group="Ranged"
+				is_female="true"
+                level="31"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000010}Basilisk Ranger"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+	  <BodyProperties   version="4"
+						age="40" 
+						weight="0.45"
+						build="0.45"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.7" 
+						 build="0.7"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="125" />
+      <skill id="Riding"
+             value="100" />
+      <skill id="OneHanded"
+             value="100" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="180" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.noble_long_bow" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.heavy_steppe_arrows" />
+      <equipment slot="Item3"
+                 id="Item.heavy_steppe_arrows" />
+      <equipment slot="Head"
+                 id="Item.battanian_noble_helmet_with_feather" />				 
+      <equipment slot="Body"
+                 id="Item.battania_warlord_armor" />
+      <equipment slot="Gloves"
+                 id="Item.battania_warlord_bracers" />
+      <equipment slot="Leg"
+                 id="Item.strapped_leather_boots" />
+	  <equipment slot="Cape"
+                 id="Item.lamellar_shoulders" />	
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.noble_long_bow" />
+	  <equipment slot="Item1"
+                 id="Item.empire_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.heavy_steppe_arrows" />	
+      <equipment slot="Item3"
+                 id="Item.heavy_steppe_arrows" />				 
+      <equipment slot="Head"
+                 id="Item.battanian_noble_helmet_with_feather" />
+      <equipment slot="Body"
+                 id="Item.battania_warlord_armor" />
+      <equipment slot="Gloves"
+                 id="Item.battania_warlord_bracers" />
+      <equipment slot="Leg"
+                 id="Item.strapped_leather_boots" />
+	  <equipment slot="Cape"
+                 id="Item.brass_lamellar_shoulder" />			 
+    </equipmentSet>
+	<upgrade_targets></upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_light_cavalry"
+                default_group="Cavalry"
+				is_female="true"
+                level="21"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t2"
+                name="{=0000011}Basilisk Light Cavalry"
+				upgrade_requires="ItemCategory.war_horse"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties version="4"
+                      age="25"
+                      weight="0.2"
+                      build="0.2216"
+                      key="0000000000000000000000000004000000000000000000000000000000000000000C400400000000000000000000000000000000000000000000000000780000" />
+      <BodyPropertiesMax version="4"
+                         age="40"
+                         weight="0.5"
+                         build="0.5187"
+                         key="0039FC045ABC2919FFFFFEFFFFF6FFFFFEFFFFEFFFFEFFFFFFEFEFFFFFFFFFFF000C6EF900FFF0EE000000000000000000000000000000000000000000780081" />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="75" />
+      <skill id="Riding"
+             value="150" />
+      <skill id="OneHanded"
+             value="100" />
+      <skill id="TwoHanded"
+             value="75" />
+      <skill id="Polearm"
+             value="125" />
+      <skill id="Bow"
+             value="125" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.military_fork_pike_t3" />
+	  <equipment slot="Item1"
+                 id="Item.empire_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.bound_horsemans_kite_shield" />
+      <equipment slot="Body"
+                 id="Item.empire_horseman_armor" />
+      <equipment slot="Head"
+                 id="Item.guards_kettle_over_mail_coif" />
+      <equipment slot="Cape"
+                 id="Item.steppe_leather_shoulders" />
+      <equipment slot="Gloves"
+                 id="Item.leather_gloves" />
+      <equipment slot="Leg"
+                 id="Item.empire_horseman_boots" />		
+	  <equipment slot="Horse"
+               id="Item.vlandia_horse" />
+      <equipment slot="HorseHarness"
+               id="Item.light_harness" />		
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.military_fork_pike_t3" />
+	  <equipment slot="Item1"
+                 id="Item.empire_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.old_horsemans_kite_shield" />
+	  <equipment slot="Item3"
+                 id="Item.campaign_banner_small" />				 
+      <equipment slot="Body"
+                 id="Item.empire_horseman_armor" />
+      <equipment slot="Head"
+                 id="Item.guards_kettle_over_mail_coif" />
+      <equipment slot="Cape"
+                 id="Item.khuzait_leather_pauldron" />
+      <equipment slot="Gloves"
+                 id="Item.padded_vambrace" />
+      <equipment slot="Leg"
+                 id="Item.empire_horseman_boots" />
+	  <equipment slot="Horse"
+               id="Item.vlandia_horse" />
+      <equipment slot="HorseHarness"
+               id="Item.light_harness" />						 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.military_fork_pike_t3" />
+	  <equipment slot="Item1"
+                 id="Item.empire_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.bound_horsemans_kite_shield" />
+      <equipment slot="Body"
+                 id="Item.empire_horseman_armor" />
+      <equipment slot="Head"
+                 id="Item.guards_kettle_over_mail_coif" />
+      <equipment slot="Cape"
+                 id="Item.steppe_leather_shoulders" />
+      <equipment slot="Gloves"
+                 id="Item.leather_gloves" />
+      <equipment slot="Leg"
+                 id="Item.empire_horseman_boots" />		
+	  <equipment slot="Horse"
+               id="Item.vlandia_horse" />
+      <equipment slot="HorseHarness"
+               id="Item.light_harness" />		
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_heavy_cavalry" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_heavy_cavalry"
+                default_group="Cavalry"
+				is_female="false"
+                level="26"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t3"
+                name="{=0000011}Basilisk Heavy Cavalry"
+				upgrade_requires="ItemCategory.war_horse"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties version="4"
+                      age="25"
+                      weight="0.2"
+                      build="0.2216"
+                      key="0000000000000000000000000004000000000000000000000000000000000000000C400400000000000000000000000000000000000000000000000000780000" />
+      <BodyPropertiesMax version="4"
+                         age="40"
+                         weight="0.5"
+                         build="0.5187"
+                         key="0039FC045ABC2919FFFFFEFFFFF6FFFFFEFFFFEFFFFEFFFFFFEFEFFFFFFFFFFF000C6EF900FFF0EE000000000000000000000000000000000000000000780081" />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="75" />
+      <skill id="Riding"
+             value="150" />
+      <skill id="OneHanded"
+             value="100" />
+      <skill id="TwoHanded"
+             value="75" />
+      <skill id="Polearm"
+             value="125" />
+      <skill id="Bow"
+             value="125" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.fine_pike_t4" />
+	  <equipment slot="Item1"
+                 id="Item.empire_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.heavy_horsemans_kite_shield" />
+      <equipment slot="Body"
+                 id="Item.lamellar_with_scale_skirt" />
+      <equipment slot="Head"
+                 id="Item.decorated_goggled_helmet" />
+      <equipment slot="Cape"
+                 id="Item.steppe_leather_shoulders" />
+      <equipment slot="Gloves"
+                 id="Item.leather_gloves" />
+      <equipment slot="Leg"
+                 id="Item.empire_horseman_boots" />		
+	  <equipment slot="Horse"
+               id="Item.charger" />
+      <equipment slot="HorseHarness"
+               id="Item.halfchain_barding" />		
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.fine_pike_t4" />
+	  <equipment slot="Item1"
+                 id="Item.empire_sword_2_t3" />	
+      <equipment slot="Item2"
+                 id="Item.heavy_horsemans_kite_shield" />				 
+      <equipment slot="Body"
+                 id="Item.lamellar_with_scale_skirt" />
+      <equipment slot="Head"
+                 id="Item.decorated_goggled_helmet" />
+      <equipment slot="Cape"
+                 id="Item.khuzait_leather_pauldron" />
+      <equipment slot="Gloves"
+                 id="Item.padded_vambrace" />
+      <equipment slot="Leg"
+                 id="Item.empire_horseman_boots" />
+	  <equipment slot="Horse"
+               id="Item.charger" />
+      <equipment slot="HorseHarness"
+               id="Item.halfchain_barding" />						 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_vanguard" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_vanguard"
+                default_group="Cavalry"
+				is_female="true"
+                level="31"
+                civilianTemplate="NPCCharacter.empire_troop_civilian_template_t1"
+                name="{=0000013}Basilisk Vanguard"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="30" 
+						weight="0.5"
+						build="0.5"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.8187" 
+						 build="0.8187"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="150" />
+      <skill id="Riding"
+             value="225" />
+      <skill id="OneHanded"
+             value="180" />
+      <skill id="TwoHanded"
+             value="100" />
+      <skill id="Polearm"
+             value="180" />
+      <skill id="Bow"
+             value="125" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_pike_1_t5" />
+	  <equipment slot="Item1"
+                 id="Item.heavy_horsemans_kite_shield" />
+	  <equipment slot="Item2"
+                 id="Item.battania_sword_4_t4" />				 
+      <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />
+      <equipment slot="Head"
+                 id="Item.imperial_goggled_helmet" />
+      <equipment slot="Gloves"
+                 id="Item.lamellar_plate_gauntlets" />
+	  <equipment slot="Cape"
+                 id="Item.pauldron_cape_a" />	
+ 	  <equipment slot="Horse"
+               id="Item.war_horse" />
+      <equipment slot="HorseHarness"
+               id="Item.chain_horse_harness" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.vlandia_pike_1_t5" />
+	  <equipment slot="Item1"
+                 id="Item.heavy_horsemans_kite_shield" />				 
+      <equipment slot="Item2"
+                 id="Item.empire_sword_5_t4" />	
+	  <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />
+      <equipment slot="Head"
+                 id="Item.sturgian_helmet_closed" />
+      <equipment slot="Gloves"
+                 id="Item.lamellar_plate_gauntlets" />
+	  <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />			
+	  <equipment slot="Horse"
+               id="Item.war_horse" />
+      <equipment slot="HorseHarness"
+               id="Item.chain_horse_harness" />			 
+    </equipmentSet>
+	<upgrade_targets></upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_nobleman"
+                default_group="Cavalry"
+				is_female="true"
+                level="20"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000014}Basilisk Noble"
+				occupation="Soldier"
+                is_basic_troop="true"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.45"
+						build="0.45"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="30" 
+						 weight="0.8" 
+						 build="0.8"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="100" />
+      <skill id="Riding"
+             value="140" />
+      <skill id="OneHanded"
+             value="100" />
+      <skill id="TwoHanded"
+             value="100" />
+      <skill id="Polearm"
+             value="100" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="10" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.bastard_sword_t2" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_lance_1_t3" />
+	  <equipment slot="Item2"
+                 id="Item.horsemans_heater_shield" />		 
+      <equipment slot="Body"
+                 id="Item.imperial_mail_over_leather" />
+      <equipment slot="Leg"
+                 id="Item.strapped_leather_boots" />
+      <equipment slot="Head"
+                 id="Item.nasal_cervelliere_over_laced_coif" />
+      <equipment slot="Gloves"
+                 id="Item.leather_gloves" />
+	  <equipment slot="Cape"
+                 id="Item.woven_leather_shoulders" />	
+ 	  <equipment slot="Horse"
+               id="Item.t2_vlandia_horse" />
+      <equipment slot="HorseHarness"
+               id="Item.light_harness" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.bastard_sword_t2" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_lance_1_t3" />				 
+      <equipment slot="Item2"
+                 id="Item.horsemans_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_mail_over_stripped_leather" />
+      <equipment slot="Leg"
+                 id="Item.strapped_leather_boots" />
+      <equipment slot="Head"
+                 id="Item.nasal_cervelliere_over_laced_coif" />
+      <equipment slot="Gloves"
+                 id="Item.leather_gloves" />
+	  <equipment slot="Cape"
+                 id="Item.woven_leather_shoulders" />			
+	  <equipment slot="Horse"
+               id="Item.t2_vlandia_horse" />
+      <equipment slot="HorseHarness"
+               id="Item.light_harness" />			 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_squire" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_squire"
+                default_group="Cavalry"
+				is_female="true"
+                level="26"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t2"
+                name="{=0000015}Basilisk Squire"
+				upgrade_requires="ItemCategory.war_horse"
+				occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.4"
+						build="0.4"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="40" 
+						 weight="0.8" 
+						 build="0.8"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="125" />
+      <skill id="Riding"
+             value="180" />
+      <skill id="OneHanded"
+             value="125" />
+      <skill id="TwoHanded"
+             value="140" />
+      <skill id="Polearm"
+             value="140" />
+      <skill id="Bow"
+             value="50" />
+      <skill id="Crossbow"
+             value="50" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.western_2hsword_t3" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_lance_2_t4" />			 
+      <equipment slot="Item2"
+                 id="Item.heavy_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_mail_vest" />
+      <equipment slot="Leg"
+                 id="Item.plated_strip_boots" />
+      <equipment slot="Head"
+                 id="Item.visored_helmet_over_padded_cloth" />
+      <equipment slot="Gloves"
+                 id="Item.padded_mitten" />
+      <equipment slot="Cape"
+                 id="Item.empire_warrior_padded_armor_shoulder" />	
+ 	  <equipment slot="Horse"
+               id="Item.charger" />
+    <equipment slot="HorseHarness"
+               id="Item.halfchain_barding" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.western_2hsword_t3" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_lance_2_t4" />				 
+      <equipment slot="Item2"
+                 id="Item.heavy_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_mail_vest" />
+      <equipment slot="Leg"
+                 id="Item.plated_strip_boots" />
+      <equipment slot="Head"
+                 id="Item.visored_helmet_over_padded_cloth" />
+      <equipment slot="Gloves"
+                 id="Item.padded_mitten" />
+      <equipment slot="Cape"
+                 id="Item.empire_warrior_padded_armor_shoulder" />		
+	  <equipment slot="Horse"
+               id="Item.charger" />
+    <equipment slot="HorseHarness"
+               id="Item.halfchain_barding" />			 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_knight" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_knight"
+                default_group="Cavalry"
+				is_female="true"
+                level="42"
+                civilianTemplate="NPCCharacter.empire_troop_civilian_template_t3"
+                name="{=0000016}Basilisk Knight"
+				occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="35" 
+						weight="0.45"
+						build="0.45"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.85" 
+						 build="0.85"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="175" />
+      <skill id="Riding"
+             value="225" />
+      <skill id="OneHanded"
+             value="175" />
+      <skill id="TwoHanded"
+             value="225" />
+      <skill id="Polearm"
+             value="225" />
+      <skill id="Bow"
+             value="100" />
+      <skill id="Crossbow"
+             value="100" />
+      <skill id="Throwing"
+             value="100" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.western_2hsword_t4" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_lance_2_t4" />			 
+      <equipment slot="Item2"
+                 id="Item.wide_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.decorated_imperial_boots" />
+      <equipment slot="Head"
+                 id="Item.visored_helmet_over_mail_coif" />
+      <equipment slot="Gloves"
+                 id="Item.plated_strip_gauntlets" />
+      <equipment slot="Cape"
+                 id="Item.pauldron_cape_a" />	
+ 	  <equipment slot="Horse"
+               id="Item.noble_horse_western" />
+    <equipment slot="HorseHarness"
+               id="Item.chain_horse_harness" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.western_2hsword_t4" />
+	  <equipment slot="Item1"
+                 id="Item.empire_lance_2_t4" />				 
+      <equipment slot="Item2"
+                 id="Item.wide_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.decorated_imperial_boots" />
+      <equipment slot="Head"
+                 id="Item.visored_helmet_over_mail_coif" />
+      <equipment slot="Gloves"
+                 id="Item.plated_strip_gauntlets" />
+      <equipment slot="Cape"
+                 id="Item.pauldron_cape_a" />		
+	  <equipment slot="Horse"
+               id="Item.noble_horse_western" />
+    <equipment slot="HorseHarness"
+               id="Item.chain_horse_harness" />			 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_master" />
+    </upgrade_targets>
+  </NPCCharacter>
+  
+  <!--Master-->
+  
+  <NPCCharacter id="mod_f_basilisk_master"
+                default_group="Cavalry"
+				is_female="true"
+                level="64"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000017}Basilisk Master"
+				occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties version="4"
+                      age="30"
+                      weight="0.3682"
+                      build="0.4216"
+                      key="0000000000000000000000000004000000000000000000000000000000000000000C400400000000000000000000000000000000000000000000000000780000" />
+      <BodyPropertiesMax version="4"
+                         age="55"
+                         weight="0.428"
+                         build="0.7187"
+                         key="002D080E4000034E718665889660789AA0F7840587B18276CDA8EC888951803702A04624FA768509000000000000000000000000000000000000000021544002" />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="200" />
+      <skill id="Riding"
+             value="250" />
+      <skill id="OneHanded"
+             value="250" />
+      <skill id="TwoHanded"
+             value="250" />
+      <skill id="Polearm"
+             value="250" />
+      <skill id="Bow"
+             value="125" />
+      <skill id="Crossbow"
+             value="125" />
+      <skill id="Throwing"
+             value="125" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="item.vlandia_2hsword_1_t5" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_lance_3_t5" />			 
+      <equipment slot="Item2"
+                 id="Item.wide_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />
+      <equipment slot="Head"
+                 id="Item.goggled_helmet_over_full_mail" />
+      <equipment slot="Gloves"
+                 id="Item.decorated_imperial_gauntlets" />
+      <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />	
+ 	  <equipment slot="Horse"
+               id="Item.noble_horse_battania" />
+    <equipment slot="HorseHarness"
+               id="Item.chain_barding" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_2hsword_1_t5" />
+	  <equipment slot="Item1"
+                 id="Item.empire_lance_3_t5" />				 
+      <equipment slot="Item2"
+                 id="Item.wide_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />
+      <equipment slot="Head"
+                 id="Item.goggled_helmet_over_full_mail" />
+      <equipment slot="Gloves"
+                 id="Item.decorated_imperial_gauntlets" />
+      <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />		
+	  <equipment slot="Horse"
+               id="Item.noble_horse_battania" />
+    <equipment slot="HorseHarness"
+               id="Item.chain_barding" />			 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_grandmaster" />
+    </upgrade_targets>
+  </NPCCharacter>
+  
+  <!--Grandmaster-->
+  
+  <NPCCharacter id="mod_f_basilisk_grandmaster"
+                default_group="Cavalry"
+				is_female="true"
+                level="100"
+                civilianTemplate="NPCCharacter.empire_troop_civilian_template_t2"
+                name="{=0000018}Basilisk Grandmaster"
+				occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties version="4"
+                      age="35"
+                      weight="0.3682"
+                      build="0.5216"
+                      key="0000000000000000000000000004000000000000000000000000000000000000000C400400000000000000000000000000000000000000000000000000780000" />
+      <BodyPropertiesMax version="4"
+                         age="55"
+                         weight="0.528"
+                         build="0.8187"
+                         key="002D080E4000034E718665889660789AA0F7840587B18276CDA8EC888951803702A04624FA768509000000000000000000000000000000000000000021544002" />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="300" />
+      <skill id="Riding"
+             value="370" />
+      <skill id="OneHanded"
+             value="470" />
+      <skill id="TwoHanded"
+             value="470" />
+      <skill id="Polearm"
+             value="500" />
+      <skill id="Bow"
+             value="200" />
+      <skill id="Crossbow"
+             value="200" />
+      <skill id="Throwing"
+             value="200" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_2hsword_1_t5" />
+	  <equipment slot="Item1"
+                 id="Item.vlandia_lance_3_t5" />			 
+      <equipment slot="Item2"
+                 id="Item.wide_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />
+      <equipment slot="Head"
+                 id="Item.empire_guarded_lord_helmet" />
+      <equipment slot="Gloves"
+                 id="Item.lamellar_plate_gauntlets" />
+      <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />	
+ 	  <equipment slot="Horse"
+               id="Item.noble_horse_battania" />
+    <equipment slot="HorseHarness"
+               id="Item.imperial_scale_barding" />			 
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.empire_sword_6_t5" />
+	  <equipment slot="Item1"
+                 id="Item.khuzait_polearm_2_t5" />			 
+      <equipment slot="Item2"
+                 id="Item.wide_heater_shield" />
+	  <equipment slot="Body"
+                 id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />
+      <equipment slot="Head"
+                 id="Item.empire_guarded_lord_helmet" />
+      <equipment slot="Gloves"
+                 id="Item.lamellar_plate_gauntlets" />
+      <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />	
+ 	  <equipment slot="Horse"
+               id="Item.noble_horse_battania" />
+    <equipment slot="HorseHarness"
+               id="Item.imperial_scale_barding" />			 
+    </equipmentSet>
+	<upgrade_targets></upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_crossbow"
+                default_group="Ranged"
+				is_female="true"
+                level="21"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000009}Basilisk Quarreller"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+      <BodyProperties   version="4"
+						age="25" 
+						weight="0.35"
+						build="0"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="40" 
+						 weight="0.7" 
+						 build="0.7"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="125" />
+      <skill id="Riding"
+             value="100" />
+      <skill id="OneHanded"
+             value="80" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="120" />
+      <skill id="Crossbow"
+             value="150" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.empire_sword_2_t3" />
+	  <equipment slot="Item1"
+                 id="Item.crossbow_c" />	
+      <equipment slot="Item2"
+                 id="Item.bolt_a" />
+      <equipment slot="Item3"
+                 id="Item.bolt_a" />
+      <equipment slot="Head"
+                 id="Item.kettle_helmet_over_arming_coif" />				 
+      <equipment slot="Body"
+                 id="Item.mail_shirt" />
+      <equipment slot="Gloves"
+                 id="Item.roughtied_leather_bracers" />
+      <equipment slot="Leg"
+                 id="Item.leather_cavalier_boots" />
+	  <equipment slot="Cape"
+                 id="Item.scarf" />	
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_sword_2_t3" />
+	  <equipment slot="Item1"
+                 id="Item.crossbow_c" />	
+      <equipment slot="Item2"
+                 id="Item.bolt_a" />	
+      <equipment slot="Item3"
+                 id="Item.bolt_a" />				 
+      <equipment slot="Head"
+                 id="Item.kettle_helmet_over_arming_coif" />
+      <equipment slot="Body"
+                 id="Item.mail_shirt" />
+      <equipment slot="Gloves"
+                 id="Item.roughtied_leather_bracers" />
+      <equipment slot="Leg"
+                 id="Item.leather_cavalier_boots" />	 
+    </equipmentSet>
+	<upgrade_targets>
+      <upgrade_target id="NPCCharacter.mod_f_basilisk_sharpshooter" />
+    </upgrade_targets>
+  </NPCCharacter>
+  <NPCCharacter id="mod_f_basilisk_sharpshooter"
+                default_group="Ranged"
+				is_female="true"
+                level="31"
+                civilianTemplate="NPCCharacter.vlandia_troop_civilian_template_t1"
+                name="{=0000010}Basilisk Sharpshooter"
+                occupation="Soldier"
+                culture="Culture.basilisk_culture">
+	<face>
+	  <BodyProperties   version="4"
+						age="20" 
+						weight="0.25"
+						build="0"  
+						key="0016980880A039128867ABBB8A675726689C7379A4786D2B87977C55CBC868B501C776130CC25B66000000000000000000000000000000000000000031841002"  />
+      
+	  <BodyPropertiesMax version="4" 
+						 age="50" 
+						 weight="0.7" 
+						 build="0.7"  
+						 key="00115800005823C047A7C4B6D7AA956955782489A468A665868CE4124688469601577613055BE83500000000000000000000000000000000000000002EB45102"  />
+    </face>		
+	<skills>
+      <skill id="Athletics"
+             value="150" />
+      <skill id="Riding"
+             value="100" />
+      <skill id="OneHanded"
+             value="100" />
+      <skill id="TwoHanded"
+             value="50" />
+      <skill id="Polearm"
+             value="50" />
+      <skill id="Bow"
+             value="125" />
+      <skill id="Crossbow"
+             value="225" />
+      <skill id="Throwing"
+             value="50" />
+    </skills>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.vlandia_sword_2_t3" />
+	  <equipment slot="Item1"
+                 id="Item.crossbow_f" />	
+      <equipment slot="Item2"
+                 id="Item.bolt_a" />
+      <equipment slot="Item3"
+                 id="Item.bolt_a" />
+      <equipment slot="Head"
+                 id="Item.guards_kettle_over_mail_coif" />				 
+      <equipment slot="Body"
+                 id="Item.imperial_lamellar" />
+      <equipment slot="Gloves"
+                 id="Item.mail_mitten" />
+      <equipment slot="Leg"
+                 id="Item.strapped_mail_chausses" />
+	  <equipment slot="Cape"
+                 id="Item.studded_imperial_neckguard" />	
+    </equipmentSet>
+	<equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.empire_sword_2_t3" />
+	  <equipment slot="Item1"
+                 id="Item.crossbow_f" />	
+      <equipment slot="Item2"
+                 id="Item.bolt_a" />	
+      <equipment slot="Item3"
+                 id="Item.bolt_a" />				 
+      <equipment slot="Head"
+                 id="Item.guards_kettle_over_mail_coif" />
+      <equipment slot="Body"
+                 id="Item.imperial_lamellar" />
+      <equipment slot="Gloves"
+                 id="Item.reinforced_padded_mitten" />
+      <equipment slot="Leg"
+                 id="Item.strapped_mail_chausses" />
+	  <equipment slot="Cape"
+                 id="Item.studded_imperial_neckguard" />			 
+    </equipmentSet>
+	<upgrade_targets></upgrade_targets>
+  </NPCCharacter>
+</NPCCharacters>
