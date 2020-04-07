@@ -84,22 +84,6 @@
       <equipment slot="Gloves"
                  id="Item.strapped_leather_bracers" /> 
     </equipmentSet>
-	<equipmentSet>
-      <equipment slot="Item0"
-                 id="Item.campaign_banner_small" />
-	  <equipment slot="Item1"
-                 id="Item.leather_bound_kite_shield" />
-      <equipment slot="Head"
-                 id="Item.leather_cap" />
-      <equipment slot="Body"
-                 id="Item.tunic_with_shoulder_pads" />
-      <equipment slot="Leg"
-                 id="Item.leather_shoes" />
-      <equipment slot="Gloves"
-                 id="Item.strapped_leather_bracers" /> 
-	  <equipment slot="Cape"
-                 id="Item.scarf" />	
-    </equipmentSet>
 	<upgrade_targets>
       <upgrade_target id="NPCCharacter.mod_basilisk_militia" />
 	  <upgrade_target id="NPCCharacter.mod_basilisk_light_cavalry" />
@@ -165,9 +149,7 @@
       <equipment slot="Item0"
                  id="Item.vlandia_sword_1_t2" />
 	  <equipment slot="Item1"
-                 id="Item.leather_round_shield" />	
-	  <equipment slot="Item2"
-                 id="Item.campaign_banner_small" />				 
+                 id="Item.leather_round_shield" />		 
       <equipment slot="Head"
                  id="Item.imperial_leather_coif" />
       <equipment slot="Body"
@@ -263,9 +245,7 @@
 	  <equipment slot="Item1"
 				 id="Item.reinforced_kite_shield" />			
 	  <equipment slot="Item2"
-				 id="Item.generic_javelin_1_t3" /> 
-	  <equipment slot="Item3"
-                 id="Item.campaign_banner_small" />						 
+				 id="Item.generic_javelin_1_t3" /> 	 
 	  <equipment slot="Head"
 				 id="Item.leatherlame_nasalhelm_over_imperial_leather" />
 	  <equipment slot="Body"
@@ -935,9 +915,7 @@
 	  <equipment slot="Item1"
                  id="Item.empire_sword_2_t3" />	
       <equipment slot="Item2"
-                 id="Item.old_horsemans_kite_shield" />
-	  <equipment slot="Item3"
-                 id="Item.campaign_banner_small" />				 
+                 id="Item.old_horsemans_kite_shield" />			 
       <equipment slot="Body"
                  id="Item.empire_horseman_armor" />
       <equipment slot="Head"
