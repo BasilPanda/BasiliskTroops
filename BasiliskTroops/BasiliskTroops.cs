@@ -1,29 +1,44 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Diagnostics;
-using TaleWorlds.Core;
 using TaleWorlds.Localization;
-using TaleWorlds.MountAndBlade;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Actions;
-using TaleWorlds.CampaignSystem.Overlay;
-using System.IO;
-using System.Xml.Serialization;
 using TaleWorlds.SaveSystem;
 
 namespace BasiliskTroops
 {
     public class BasiliskTroops : CampaignBehaviorBase
     {
-
+        public static bool femaleTreeEnabled = true;
+        
         Dictionary<string, TroopProperties> troopDic = new Dictionary<string, TroopProperties>();
         Random rand = new Random();
+
+        public static Dictionary<string, string> genderPairs = new Dictionary<string, string>()
+        {
+            { "mod_basilisk_trainee",           "mod_f_basilisk_trainee"},
+            { "mod_basilisk_militia",           "mod_f_basilisk_militia" },
+            { "mod_basilisk_light_infantry",    "mod_f_basilisk_light_infantry" },
+            { "mod_basilisk_skirmisher",        "mod_f_basilisk_skirmisher" },
+            { "mod_basilisk_archer",            "mod_f_basilisk_archer" },
+            { "mod_basilisk_spearman",          "mod_f_basilisk_spearman" },
+            { "mod_basilisk_crossbow",          "mod_f_basilisk_crossbow" },
+            { "mod_basilisk_light_cavalry",     "mod_f_basilisk_light_cavalry" },
+            { "mod_basilisk_heavy_infantry",    "mod_f_basilisk_heavy_infantry" },
+            { "mod_basilisk_ranger",            "mod_f_basilisk_ranger" },
+            { "mod_basilisk_armored_spearman",  "mod_f_basilisk_armored_spearman" },
+            { "mod_basilisk_sharpshooter",      "mod_f_basilisk_sharpshooter" },
+            { "mod_basilisk_heavy_cavalry",    "mod_f_basilisk_heavy_cavalry" },
+            { "mod_basilisk_slayer",            "mod_f_basilisk_slayer" },
+            { "mod_basilisk_vanguard",          "mod_f_basilisk_vanguard" },
+            { "mod_basilisk_nobleman",          "mod_f_basilisk_nobleman" },
+            { "mod_basilisk_squire",            "mod_f_basilisk_squire"},
+            { "mod_basilisk_knight",            "mod_f_basilisk_knight" },
+            { "mod_basilisk_master",            "mod_f_basilisk_master" },
+            { "mod_basilisk_grandmaster",       "mod_f_basilisk_grandmaster" }
+        };
 
         public static string[] militiaTroopIDs = new string[]
         {
@@ -33,10 +48,13 @@ namespace BasiliskTroops
             "mod_basilisk_skirmisher",
             "mod_basilisk_archer",
             "mod_basilisk_spearman",
+            "mod_basilisk_crossbow",
             "mod_basilisk_light_cavalry",
             "mod_basilisk_heavy_infantry",
             "mod_basilisk_ranger",
             "mod_basilisk_armored_spearman",
+            "mod_basilisk_heavy_cavalry",
+            "mod_basilisk_sharpshooter",
             "mod_basilisk_slayer",
             "mod_basilisk_vanguard"
         };
@@ -49,6 +67,7 @@ namespace BasiliskTroops
             "mod_basilisk_master",
             "mod_basilisk_grandmaster"
         };
+        
 
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
@@ -59,7 +78,7 @@ namespace BasiliskTroops
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnSessionLaunched));
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, this.trackDaily);
+            CampaignEvents.WeeklyTickEvent.AddNonSerializedListener(this, this.trackDaily);
         }
 
         public void AddTroopMenu(CampaignGameStarter obj)
@@ -69,7 +88,7 @@ namespace BasiliskTroops
 
             obj.AddGameMenu("town_mod_pay", "The Basilisk Guild offers its powerful mercenaries, both commoners and nobles, in every town for quite the coin. " +
                 "The guild manager tells you that their mercenaries favor more wealthy places." +
-                " She also tells you that there is a daily upfront fee of {COST} denars here just to view available mercenaries. " +
+                " She also tells you that there is a weekly upfront fee of {COST} denars here just to view available mercenaries. The available mercenaries will update weekly." +
                 "She then tells you that they also offer immediate contingents for the extreme wealthy. The larger contingents are of higher quality.",
                 (MenuCallbackArgs args) =>
                 {
@@ -116,7 +135,7 @@ namespace BasiliskTroops
                     }
                 });
 
-            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay {DAILY_COST} denars to see daily troops",
+            obj.AddGameMenuOption("town_mod_pay", "pay_fee", "Pay {DAILY_COST} denars to see weekly troops",
                 (MenuCallbackArgs args) =>
                 {
                     TroopProperties troopProps;
@@ -324,35 +343,44 @@ namespace BasiliskTroops
             troopProspModifier = (int)Math.Floor(town.Prosperity / 100 + Clan.PlayerClan.Renown * 0.05);
             int troopAmount = 0;
             CharacterObject unit;
+            CharacterObject unitf;
             foreach (string id in troopIDs)
             {
                 unit = CharacterObject.Find(id);
+                string f_id = "";
+                genderPairs.TryGetValue(unit.StringId, out f_id);
+                unitf = CharacterObject.Find(f_id);
                 if (unit.Level > 21)
                 {
                     continue;
                 }
-                randomGender(unit);
                 troopAmount = (int)Math.Floor((double)troopProspModifier / unit.Level);
                 troopAmount = balanceTroops(unit.Level, troopAmount);
                 if (troopAmount >= 1)
                 {
                     troopAmount = rand.Next((int)Math.Ceiling((double)troopAmount / 2), troopAmount + 1);
-                    party.AddElementToMemberRoster(unit, troopAmount, true);
+                    while(troopAmount > 0)
+                    {
+                        party.AddElementToMemberRoster(randomGender(unit, unitf), 1, true);
+                        troopAmount--;
+                    }
                 }
             }
             return party;
         }
 
         // Randomizes gender
-        public void randomGender(CharacterObject unit)
+        public CharacterObject randomGender(CharacterObject unit, CharacterObject unitf)
         {
+            if (!femaleTreeEnabled)
+            {
+                return unit;
+            } 
             if (rand.Next(0, 2) == 1)
             {
-                unit.UpdatePlayerCharacterBodyProperties(unit.GetBodyProperties(unit.GetFirstEquipment(false)), true);
-            } else
-            {
-                unit.UpdatePlayerCharacterBodyProperties(unit.GetBodyProperties(unit.GetFirstEquipment(false)), false);
+                return unitf;
             }
+            return unit;
         }
 
         // Allows for 5, 15, 25
@@ -360,17 +388,24 @@ namespace BasiliskTroops
         {
             int amount = 0;
             CharacterObject unit;
+            CharacterObject unitf;
             if (troopAmount == 5)
             {
                 foreach(string id in militiaTroopIDs)
                 {
                     unit = CharacterObject.Find(id);
+                    string f_id = "";
+                    genderPairs.TryGetValue(unit.StringId, out f_id);
+                    unitf = CharacterObject.Find(f_id);
                     if (unit.Level < 17 && troopAmount > 0)
                     {
                         amount = rand.Next(troopAmount / 2, troopAmount);
-                        randomGender(unit);
-                        MobileParty.MainParty.AddElementToMemberRoster(unit, amount);
                         troopAmount -= amount;
+                        while (amount > 0)
+                        {
+                            MobileParty.MainParty.AddElementToMemberRoster(randomGender(unit, unitf), 1, false);
+                            amount--;
+                        }
                     }
                 }
                 if (troopAmount > 0)
@@ -385,11 +420,18 @@ namespace BasiliskTroops
                 foreach (string id in militiaTroopIDs)
                 {
                     unit = CharacterObject.Find(id);
+                    string f_id = "";
+                    genderPairs.TryGetValue(unit.StringId, out f_id);
+                    unitf = CharacterObject.Find(f_id);
                     if (unit.Level < 30 && troopAmount > 0)
                     {
                         amount = rand.Next(troopAmount / 2, troopAmount);
-                        MobileParty.MainParty.AddElementToMemberRoster(unit, amount);
                         troopAmount -= amount;
+                        while (amount > 0)
+                        {
+                            MobileParty.MainParty.AddElementToMemberRoster(randomGender(unit, unitf), 1, false);
+                            amount--;
+                        }
                     }
                 }
                 if (troopAmount > 0)
@@ -406,11 +448,18 @@ namespace BasiliskTroops
                 foreach (string id in militiaTroopIDs)
                 {
                     unit = CharacterObject.Find(id);
+                    string f_id = "";
+                    genderPairs.TryGetValue(unit.StringId, out f_id);
+                    unitf = CharacterObject.Find(f_id);
                     if (unit.Level < 40 && troopAmount > 0)
                     {
                         amount = rand.Next(troopAmount/2, troopAmount);
-                        MobileParty.MainParty.AddElementToMemberRoster(unit, amount);
                         troopAmount -= amount;
+                        while (amount > 0)
+                        {
+                            MobileParty.MainParty.AddElementToMemberRoster(randomGender(unit, unitf), 1, false);
+                            amount--;
+                        }
                     }
                 }
                 if (troopAmount > 0)

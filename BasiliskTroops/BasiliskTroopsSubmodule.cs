@@ -6,6 +6,13 @@ namespace BasiliskTroops
 {
     class BasiliskTroopsSubmodule : MBSubModuleBase
     {
+
+        public static readonly string ModuleName = "BasiliskGuild";
+        
+        protected override void OnSubModuleLoad()
+        {
+            base.OnSubModuleLoad();
+        }
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             if (!(game.GameType is Campaign))
