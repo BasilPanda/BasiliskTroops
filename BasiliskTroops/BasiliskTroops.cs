@@ -6,6 +6,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.SaveSystem;
+using TaleWorlds.Core;
 
 namespace BasiliskTroops
 {
@@ -26,12 +27,14 @@ namespace BasiliskTroops
             { "mod_basilisk_spearman",          "mod_f_basilisk_spearman" },
             { "mod_basilisk_crossbow",          "mod_f_basilisk_crossbow" },
             { "mod_basilisk_light_cavalry",     "mod_f_basilisk_light_cavalry" },
+            { "mod_basilisk_light_horsearcher", "mod_f_basilisk_light_horsearcher" },
             { "mod_basilisk_heavy_infantry",    "mod_f_basilisk_heavy_infantry" },
             { "mod_basilisk_ranger",            "mod_f_basilisk_ranger" },
             { "mod_basilisk_armored_spearman",  "mod_f_basilisk_armored_spearman" },
             { "mod_basilisk_sharpshooter",      "mod_f_basilisk_sharpshooter" },
-            { "mod_basilisk_heavy_cavalry",    "mod_f_basilisk_heavy_cavalry" },
+            { "mod_basilisk_heavy_cavalry",     "mod_f_basilisk_heavy_cavalry" },
             { "mod_basilisk_slayer",            "mod_f_basilisk_slayer" },
+            { "mod_basilisk_heavy_horsearcher", "mod_f_basilisk_heavy_horsearcher" },
             { "mod_basilisk_vanguard",          "mod_f_basilisk_vanguard" },
             { "mod_basilisk_nobleman",          "mod_f_basilisk_nobleman" },
             { "mod_basilisk_squire",            "mod_f_basilisk_squire"},
@@ -50,12 +53,14 @@ namespace BasiliskTroops
             "mod_basilisk_spearman",
             "mod_basilisk_crossbow",
             "mod_basilisk_light_cavalry",
+            "mod_basilisk_light_horsearcher",
             "mod_basilisk_heavy_infantry",
             "mod_basilisk_ranger",
             "mod_basilisk_armored_spearman",
             "mod_basilisk_heavy_cavalry",
             "mod_basilisk_sharpshooter",
             "mod_basilisk_slayer",
+            "mod_basilisk_heavy_horsearcher",
             "mod_basilisk_vanguard"
         };
 
@@ -67,7 +72,6 @@ namespace BasiliskTroops
             "mod_basilisk_master",
             "mod_basilisk_grandmaster"
         };
-        
 
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
