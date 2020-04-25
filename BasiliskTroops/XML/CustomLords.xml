@@ -1,0 +1,64 @@
+<NPCCharacters>
+  <!-- Basilisk Guild -->
+  <NPCCharacter id="mod_basilisk_hero_1"
+                default_group="Cavalry"
+                voice="earnest"
+                is_hero="true"
+                faction="Faction.mod_basiliskguild_faction"
+                civilianTemplate="NPCCharacter.empire_unarmored_noble_equipment"
+                culture="Culture.empire"
+                occupation="Lord"
+                name="Adoy">
+    <face>
+      <BodyProperties version="4" age="50" weight="0.3" build="0.8"  key="0028F0059744048E7C59C5747805981959A789A794986646595C3172725361A501B778130B88A9880000387A00000AEB0000003300000000000000000D804004"  />
+    </face>
+    <skills>
+      <skill id="OneHanded" value="600" />
+      <skill id="TwoHanded" value="600" />
+      <skill id="Polearm" value="600" />
+      <skill id="Bow" value="600" />
+      <skill id="Crossbow" value="600" />
+      <skill id="Throwing" value="600" />
+      <skill id="Riding" value="600" />
+      <skill id="Athletics" value="600" />
+      <skill id="Crafting" value="150" />
+      <skill id="Tactics" value="300" />
+      <skill id="Scouting" value="300" />
+      <skill id="Roguery" value="50" />
+      <skill id="Leadership" value="300" />
+      <skill id="Charm" value="150" />
+      <skill id="Trade" value="200" />
+      <skill id="Steward" value="300" />
+      <skill id="Medicine" value="150" />
+      <skill id="Engineering" value="200" />
+    </skills>
+    <equipmentSet>
+      <equipment slot="Item0"
+                 id="Item.basilisk_gm_glaive" />
+      <equipment slot="Item1"
+                   id="Item.emirs_oval_shield" />
+      <equipment slot="Body"
+                   id="Item.imperial_scale_armor" />
+      <equipment slot="Leg"
+                 id="Item.lamellar_plate_boots" />
+      <equipment slot="Head"
+                 id="Item.empire_guarded_lord_helmet" />
+      <equipment slot="Gloves"
+                 id="Item.lamellar_plate_gauntlets" />
+      <equipment slot="Cape"
+                 id="Item.imperial_lamellar_shoulders" />
+      <equipment slot="Horse"
+                 id="Item.noble_horse_battania" />
+      <equipment slot="HorseHarness"
+                 id="Item.imperial_scale_barding" />
+    </equipmentSet>
+    <Traits>
+      <Trait id="KnightFightingSkills" value="10" />
+      <Trait id="Commander" value="4" />
+      <Trait id="Politician" value="1" />
+      <Trait id="Manager" value="7" />
+      <Trait id="Calculating" value="3" />
+    </Traits>
+  </NPCCharacter>
+
+</NPCCharacters>

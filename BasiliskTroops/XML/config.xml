@@ -1,0 +1,17 @@
+<BasiliskGuildSettings>
+
+  <!--Allows recruitment of female Basilisk troops-->
+  <!--Boolean (true/false) values only-->
+  <!--Default value=true-->
+  <FemaleTreeEnabled>true</FemaleTreeEnabled>
+  
+  <!--Sets the base cost of immediate troops.-->
+  <!--Integer values only.-->
+  <!--Default value=3000-->
+  <BaseCostForImmediateTroops>3000</BaseCostForImmediateTroops>
+  
+  <!--Sets the weekly cost modifier.-->
+  <!--Decimal values only.-->
+  <!--Default value=3000-->
+  <WeeklyCostModifier>1</WeeklyCostModifier>
+</BasiliskGuildSettings>

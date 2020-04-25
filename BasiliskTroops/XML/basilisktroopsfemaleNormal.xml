@@ -904,7 +904,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_3_t4" />
       <equipment slot="Item1"
-                   id="Item.strapped_round_shield" />
+                   id="Item.reinforced_kite_shield" />
       <equipment slot="Item2"
            id="Item.empire_sword_1_t2" />
       <equipment slot="Body"
@@ -922,7 +922,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_3_t4" />
       <equipment slot="Item1"
-                   id="Item.strapped_round_shield" />
+                   id="Item.reinforced_kite_shield" />
       <equipment slot="Item2"
            id="Item.empire_sword_1_t2" />
       <equipment slot="Body"
@@ -940,7 +940,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_3_t4" />
       <equipment slot="Item1"
-                   id="Item.strapped_round_shield" />
+                   id="Item.reinforced_kite_shield" />
       <equipment slot="Item2"
            id="Item.empire_sword_1_t2" />
       <equipment slot="Body"
@@ -958,7 +958,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_3_t4" />
       <equipment slot="Item1"
-                   id="Item.strapped_round_shield" />
+                   id="Item.reinforced_kite_shield" />
       <equipment slot="Item2"
            id="Item.empire_sword_1_t2" />
       <equipment slot="Body"
@@ -976,7 +976,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_3_t4" />
       <equipment slot="Item1"
-                   id="Item.strapped_round_shield" />
+                   id="Item.reinforced_kite_shield" />
       <equipment slot="Item2"
            id="Item.empire_sword_1_t2" />
       <equipment slot="Body"
@@ -994,7 +994,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_3_t4" />
       <equipment slot="Item1"
-                   id="Item.strapped_round_shield" />
+                   id="Item.reinforced_kite_shield" />
       <equipment slot="Item2"
            id="Item.empire_sword_1_t2" />
       <equipment slot="Body"
@@ -1073,7 +1073,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_4_t5" />
       <equipment slot="Item1"
-                   id="Item.heavy_round_shield" />
+                   id="Item.tall_heater_shield" />
       <equipment slot="Item2"
                    id="Item.empire_sword_2_t3" />
       <equipment slot="Head"
@@ -1091,7 +1091,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_4_t5" />
       <equipment slot="Item1"
-                   id="Item.heavy_round_shield" />
+                   id="Item.tall_heater_shield" />
       <equipment slot="Item2"
                    id="Item.empire_sword_2_t3" />
       <equipment slot="Head"
@@ -1109,7 +1109,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_4_t5" />
       <equipment slot="Item1"
-                   id="Item.heavy_round_shield" />
+                   id="Item.tall_heater_shield" />
       <equipment slot="Item2"
                    id="Item.empire_sword_2_t3" />
       <equipment slot="Head"
@@ -1127,7 +1127,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_4_t5" />
       <equipment slot="Item1"
-                   id="Item.heavy_round_shield" />
+                   id="Item.tall_heater_shield" />
       <equipment slot="Item2"
                    id="Item.empire_sword_2_t3" />
       <equipment slot="Head"
@@ -1145,7 +1145,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_4_t5" />
       <equipment slot="Item1"
-                   id="Item.heavy_round_shield" />
+                   id="Item.tall_heater_shield" />
       <equipment slot="Item2"
                    id="Item.empire_sword_2_t3" />
       <equipment slot="Head"
@@ -1163,7 +1163,7 @@
       <equipment slot="Item0"
                  id="Item.northern_spear_4_t5" />
       <equipment slot="Item1"
-                   id="Item.heavy_round_shield" />
+                   id="Item.tall_heater_shield" />
       <equipment slot="Item2"
                    id="Item.empire_sword_2_t3" />
       <equipment slot="Head"
@@ -2364,7 +2364,7 @@
       <equipment slot="Item1"
                    id="Item.vlandia_lance_1_t3" />
       <equipment slot="Item2"
-                 id="Item.small_heater_shield" />
+                 id="Item.horsemans_heater_shield" />
       <equipment slot="Body"
                    id="Item.imperial_mail_over_stripped_leather" />
       <equipment slot="Leg"
@@ -2386,7 +2386,7 @@
       <equipment slot="Item1"
                    id="Item.vlandia_lance_1_t3" />
       <equipment slot="Item2"
-                   id="Item.small_heater_shield" />
+                   id="Item.horsemans_heater_shield" />
       <equipment slot="Body"
                  id="Item.imperial_mail_over_leather" />
       <equipment slot="Leg"
@@ -2408,7 +2408,7 @@
       <equipment slot="Item1"
                    id="Item.vlandia_lance_1_t3" />
       <equipment slot="Item2"
-                 id="Item.small_heater_shield" />
+                 id="Item.horsemans_heater_shield" />
       <equipment slot="Body"
                    id="Item.imperial_mail_over_stripped_leather" />
       <equipment slot="Leg"
@@ -2430,7 +2430,7 @@
       <equipment slot="Item1"
                    id="Item.vlandia_lance_1_t3" />
       <equipment slot="Item2"
-                   id="Item.small_heater_shield" />
+                   id="Item.horsemans_heater_shield" />
       <equipment slot="Body"
                  id="Item.imperial_mail_over_leather" />
       <equipment slot="Leg"
@@ -2452,7 +2452,7 @@
       <equipment slot="Item1"
                    id="Item.vlandia_lance_1_t3" />
       <equipment slot="Item2"
-                 id="Item.small_heater_shield" />
+                 id="Item.horsemans_heater_shield" />
       <equipment slot="Body"
                    id="Item.imperial_mail_over_stripped_leather" />
       <equipment slot="Leg"
@@ -2474,7 +2474,7 @@
       <equipment slot="Item1"
                    id="Item.vlandia_lance_1_t3" />
       <equipment slot="Item2"
-                   id="Item.small_heater_shield" />
+                   id="Item.horsemans_heater_shield" />
       <equipment slot="Body"
                  id="Item.imperial_mail_over_leather" />
       <equipment slot="Leg"
@@ -2958,7 +2958,7 @@
       <equipment slot="Item1"
                    id="Item.empire_lance_3_t5" />
       <equipment slot="Item2"
-                 id="Item.stronger_reinforced_kite_shield" />
+                 id="Item.emirs_oval_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3002,7 +3002,7 @@
       <equipment slot="Item1"
                    id="Item.empire_lance_3_t5" />
       <equipment slot="Item2"
-                 id="Item.stronger_reinforced_kite_shield" />
+                 id="Item.emirs_oval_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3046,7 +3046,7 @@
       <equipment slot="Item1"
                    id="Item.empire_lance_3_t5" />
       <equipment slot="Item2"
-                 id="Item.stronger_reinforced_kite_shield" />
+                 id="Item.emirs_oval_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3155,9 +3155,9 @@
       <equipment slot="Item0"
                  id="Item.empire_sword_6_t5" />
       <equipment slot="Item1"
-                   id="Item.basilisk_gm_glaive" />
+                   id="Item.khuzait_polearm_2_t5" />
       <equipment slot="Item2"
-                 id="Item.chivalric_kite_shield" />
+                 id="Item.emirs_oval_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3177,9 +3177,9 @@
       <equipment slot="Item0"
                  id="Item.vlandia_2hsword_1_t5" />
       <equipment slot="Item1"
-                   id="Item.basilisk_gm_glaive" />
+                   id="Item.vlandia_lance_3_t5" />
       <equipment slot="Item2"
-                 id="Item.chivalric_kite_shield" />
+                 id="Item.stronger_reinforced_kite_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3199,9 +3199,9 @@
       <equipment slot="Item0"
                  id="Item.empire_sword_6_t5" />
       <equipment slot="Item1"
-                   id="Item.basilisk_gm_glaive" />
+                   id="Item.khuzait_polearm_2_t5" />
       <equipment slot="Item2"
-                 id="Item.chivalric_kite_shield" />
+                 id="Item.emirs_oval_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3221,9 +3221,9 @@
       <equipment slot="Item0"
                  id="Item.vlandia_2hsword_1_t5" />
       <equipment slot="Item1"
-                   id="Item.basilisk_gm_glaive" />
+                   id="Item.vlandia_lance_3_t5" />
       <equipment slot="Item2"
-                 id="Item.chivalric_kite_shield" />
+                 id="Item.stronger_reinforced_kite_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3243,9 +3243,9 @@
       <equipment slot="Item0"
                  id="Item.empire_sword_6_t5" />
       <equipment slot="Item1"
-                   id="Item.basilisk_gm_glaive" />
+                   id="Item.khuzait_polearm_2_t5" />
       <equipment slot="Item2"
-                 id="Item.chivalric_kite_shield" />
+                 id="Item.emirs_oval_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3265,9 +3265,9 @@
       <equipment slot="Item0"
                  id="Item.vlandia_2hsword_1_t5" />
       <equipment slot="Item1"
-                   id="Item.basilisk_gm_glaive" />
+                   id="Item.vlandia_lance_3_t5" />
       <equipment slot="Item2"
-                 id="Item.chivalric_kite_shield" />
+                 id="Item.stronger_reinforced_kite_shield" />
       <equipment slot="Body"
                    id="Item.imperial_scale_armor" />
       <equipment slot="Leg"
@@ -3287,7 +3287,7 @@
       <equipment slot="Item0"
                  id="Item.empire_sword_6_t5" />
       <equipment slot="Item1"
-                   id="Item.basilisk_gm_glaive" />
+                   id="Item.khuzait_polearm_2_t5" />
       <equipment slot="Item2"
                  id="Item.basilisk_banner_big" />
       <equipment slot="Body"
@@ -3529,9 +3529,9 @@
       <equipment slot="Item1"
                    id="Item.crossbow_f" />
       <equipment slot="Item2"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Item3"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Head"
                  id="Item.guards_kettle_over_mail_coif" />
       <equipment slot="Body"
@@ -3549,9 +3549,9 @@
       <equipment slot="Item1"
                    id="Item.crossbow_f" />
       <equipment slot="Item2"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Item3"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Head"
                  id="Item.guards_kettle_over_mail_coif" />
       <equipment slot="Body"
@@ -3569,9 +3569,9 @@
       <equipment slot="Item1"
                    id="Item.crossbow_f" />
       <equipment slot="Item2"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Item3"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Head"
                  id="Item.guards_kettle_over_mail_coif" />
       <equipment slot="Body"
@@ -3589,9 +3589,9 @@
       <equipment slot="Item1"
                    id="Item.crossbow_f" />
       <equipment slot="Item2"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Item3"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Head"
                  id="Item.guards_kettle_over_mail_coif" />
       <equipment slot="Body"
@@ -3609,9 +3609,9 @@
       <equipment slot="Item1"
                    id="Item.crossbow_f" />
       <equipment slot="Item2"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Item3"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Head"
                  id="Item.guards_kettle_over_mail_coif" />
       <equipment slot="Body"
@@ -3629,9 +3629,9 @@
       <equipment slot="Item1"
                    id="Item.crossbow_f" />
       <equipment slot="Item2"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Item3"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Head"
                  id="Item.guards_kettle_over_mail_coif" />
       <equipment slot="Body"
@@ -3651,7 +3651,7 @@
       <equipment slot="Item2"
                  id="Item.basilisk_banner_big" />
       <equipment slot="Item3"
-                 id="Item.basilisk_piercing_bolts" />
+                 id="Item.bolt_a" />
       <equipment slot="Head"
                  id="Item.guards_kettle_over_mail_coif" />
       <equipment slot="Body"

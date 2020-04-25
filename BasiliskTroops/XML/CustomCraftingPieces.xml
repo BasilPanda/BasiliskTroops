@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CraftingPieces>
+  <CraftingPiece id="grandmaster_glaive" name="{=*}Basilisk Grandmaster Glaive" tier="5" piece_type="Blade" mesh="spear_blade_19" length="37.4" weight="1.6" is_default="true">
+    <PieceUsages unavailable_usages="" />
+    <BuildData bottom_diff="-0.4" />
+    <StatContributions swing_speed_bonus="1000" thrust_speed_bonus="1000" />
+    <BladeData sharpness="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="8" />
+      <Swing damage_type="Cut" damage_factor="80" />
+    </BladeData>
+    <Flags>
+      <Flag name="BonusAgainstShield" />
+    </Flags>
+    <Materials>
+      <Material id="Iron5" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="grandmaster_guard" name="{=*}Basilisk Grandmaster Guard" tier="5" piece_type="Guard" mesh="spear_guard_4" length="2.4" weight="0.1">
+    <PieceUsages unavailable_usages="" />
+    <BuildData top_diff="0.2" />
+    <StatContributions armor_bonus="10" swing_speed_bonus="1000" thrust_speed_bonus="1000" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="grandmaster_grip" name="{=*}Basilisk Grandmaster Grip" tier="5" piece_type="Handle" mesh="spear_handle_22" length="240" weight="0.1">
+    <PieceUsages unavailable_usages="" />
+    <BuildData move_diff="0" top_diff="0" bottom_diff="0.5" />
+    <StatContributions swing_speed_bonus="1000" thrust_speed_bonus="1000" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="grandmaster_pommel" name="{=*}Basilisk Grandmaster Pommel" tier="5" piece_type="Pommel" mesh="spear_pommel_13" length="29.7" weight="0.1">
+    <PieceUsages unavailable_usages="" />
+    <StatContributions swing_speed_bonus="1000" thrust_speed_bonus="1000" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+</CraftingPieces>

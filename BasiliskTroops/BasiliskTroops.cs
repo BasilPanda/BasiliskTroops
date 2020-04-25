@@ -6,14 +6,15 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.SaveSystem;
-using TaleWorlds.Core;
+using System.Windows.Forms;
 
 namespace BasiliskTroops
 {
     public class BasiliskTroops : CampaignBehaviorBase
     {
-        public static bool femaleTreeEnabled = true;
-        
+        public static bool femaleTreeEnabled = Settings.Instance.FemaleTreeEnabled;
+        public static int baseCostForImmediate = Settings.Instance.BaseCostForImmediateTroops;
+        public static float weeklyCostModifier = Settings.Instance.WeeklyCostModifier;
         Dictionary<string, TroopProperties> troopDic = new Dictionary<string, TroopProperties>();
         Random rand = new Random();
 
@@ -75,8 +76,15 @@ namespace BasiliskTroops
 
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
-            populateGuilds();
-            AddTroopMenu(obj);
+            try
+            {
+                populateGuilds();
+                AddTroopMenu(obj);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
 
         public override void RegisterEvents()
@@ -98,7 +106,7 @@ namespace BasiliskTroops
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
-                    MBTextManager.SetTextVariable("COST", troopProps.getCost, false);
+                    MBTextManager.SetTextVariable("COST", troopProps.getCost * weeklyCostModifier, false);
                     if(Clan.PlayerClan.Tier == 0)
                     {
                         MBTextManager.SetTextVariable("RENOWN_STATUS", "No one here has heard of you before", false);
@@ -144,9 +152,9 @@ namespace BasiliskTroops
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
-                    MBTextManager.SetTextVariable("DAILY_COST", troopProps.getCost, false);
+                    MBTextManager.SetTextVariable("DAILY_COST", (int)Math.Ceiling(troopProps.getCost * weeklyCostModifier), false);
                     args.optionLeaveType = GameMenuOption.LeaveType.Trade;
-                    if (troopProps.getCost >= Hero.MainHero.Gold || troopProps.paid)
+                    if ((int)Math.Ceiling(troopProps.getCost * weeklyCostModifier) >= Hero.MainHero.Gold || troopProps.paid)
                     {
                         return false;
                     }
@@ -156,7 +164,7 @@ namespace BasiliskTroops
                 {
                     TroopProperties troopProps;
                     troopDic.TryGetValue(Settlement.CurrentSettlement.StringId, out troopProps);
-                    int cost = troopProps.getCost;
+                    int cost = (int)Math.Ceiling(troopProps.getCost * weeklyCostModifier);
                     if (cost <= Hero.MainHero.Gold)
                     {
                         GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
@@ -169,7 +177,7 @@ namespace BasiliskTroops
             obj.AddGameMenuOption("town_mod_pay", "pay_fee_5", "Pay {COST_5} denars for 5 troops",
                 (MenuCallbackArgs args) =>
                 {
-                    int cost = (int)Math.Ceiling(3000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 1000);
+                    int cost = (int)Math.Ceiling(baseCostForImmediate + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 1000);
                     MBTextManager.SetTextVariable("COST_5", cost, false);
                     args.optionLeaveType = GameMenuOption.LeaveType.Trade;
                     if (cost >= Hero.MainHero.Gold)
@@ -180,7 +188,7 @@ namespace BasiliskTroops
                 },
                 (MenuCallbackArgs args) =>
                 {
-                    int cost = (int)Math.Ceiling(3000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 1000);
+                    int cost = (int)Math.Ceiling(baseCostForImmediate + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 1000);
                     if (cost <= Hero.MainHero.Gold)
                     {
                         GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
@@ -191,7 +199,7 @@ namespace BasiliskTroops
             obj.AddGameMenuOption("town_mod_pay", "pay_fee_15", "Pay {COST_15} denars for 15 troops",
                 (MenuCallbackArgs args) =>
                 {
-                    int cost = (int)Math.Ceiling(15000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 2000);
+                    int cost = (int)Math.Ceiling(baseCostForImmediate * 3 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 2000);
                     MBTextManager.SetTextVariable("COST_15", cost, false);
                     args.optionLeaveType = GameMenuOption.LeaveType.Trade;
                     if (cost >= Hero.MainHero.Gold)
@@ -202,7 +210,7 @@ namespace BasiliskTroops
                 },
                 (MenuCallbackArgs args) =>
                 {
-                    int cost = (int)Math.Ceiling(15000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 2000);
+                    int cost = (int)Math.Ceiling(baseCostForImmediate * 3 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 2000);
                     if (cost <= Hero.MainHero.Gold)
                     {
                         GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
@@ -213,7 +221,7 @@ namespace BasiliskTroops
             obj.AddGameMenuOption("town_mod_pay", "pay_fee_25", "Pay {COST_25} denars for 25 troops",
                 (MenuCallbackArgs args) =>
                 {
-                    int cost = (int)Math.Ceiling(30000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 3000);
+                    int cost = (int)Math.Ceiling(baseCostForImmediate * 10 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 3000);
                     MBTextManager.SetTextVariable("COST_25", cost, false);
                     args.optionLeaveType = GameMenuOption.LeaveType.Trade;
                     if (cost >= Hero.MainHero.Gold)
@@ -224,7 +232,7 @@ namespace BasiliskTroops
                 },
                 (MenuCallbackArgs args) =>
                 {
-                    int cost = (int)Math.Ceiling(30000 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 3000);
+                    int cost = (int)Math.Ceiling(baseCostForImmediate * 10 + Settlement.CurrentSettlement.Prosperity / 2 + Clan.PlayerClan.Tier * 3000);
                     if (cost <= Hero.MainHero.Gold)
                     {
                         GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, cost);
@@ -235,6 +243,31 @@ namespace BasiliskTroops
                         GameMenu.SwitchToMenu("town");
                     }
                 });
+
+            /*
+            obj.AddGameMenuOption("town_mod_pay", "pay_patrol", "Pay 1 denars for a patrol",
+                (MenuCallbackArgs args) =>
+                {
+                    if (1 >= Hero.MainHero.Gold)
+                    {
+                        return false;
+                    }
+                    return true;
+                },
+                (MenuCallbackArgs args) =>
+                {
+                    if (1 <= Hero.MainHero.Gold)
+                    {
+                        GiveGoldAction.ApplyForCharacterToSettlement(Hero.MainHero, Settlement.CurrentSettlement, 1);
+                        giveTroops(25);
+                    }
+                    else
+                    {
+
+                        GameMenu.SwitchToMenu("town");
+                    }
+                });
+            */
 
             obj.AddGameMenuOption("town_mod_pay", "already_paid", "View troops",
                 (MenuCallbackArgs args) =>
@@ -476,11 +509,11 @@ namespace BasiliskTroops
 
         public int balanceTroops(int level, int troopAmount)
         {
-            if (level < 12 && troopAmount > (int)Math.Floor(6 + Clan.PlayerClan.Renown * 0.0075))
+            if (level < 12 && troopAmount > (int)Math.Floor(4 + Clan.PlayerClan.Renown * 0.0075))
             {
                 troopAmount = (int)Math.Floor(12 + Clan.PlayerClan.Renown * 0.0075);
             }
-            else if(level < 17 && troopAmount > (int)Math.Floor(4 + Clan.PlayerClan.Renown * 0.006))
+            else if(level < 17 && troopAmount > (int)Math.Floor(3 + Clan.PlayerClan.Renown * 0.006))
             {
                 troopAmount = (int)Math.Floor(6 + Clan.PlayerClan.Renown * 0.006);
             }

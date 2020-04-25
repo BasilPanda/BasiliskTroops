@@ -1,0 +1,5 @@
+<Heroes>
+	<!-- Basilisk Guild-->
+	<Hero id="mod_basilisk_hero_1" is_noble="true" faction="Faction.mod_basilisk_guild" text="Adoy is the eldest grandmaster of the Basilisk Guild."/>
+
+</Heroes>

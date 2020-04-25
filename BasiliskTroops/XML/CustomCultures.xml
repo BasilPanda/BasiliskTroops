@@ -3,7 +3,7 @@
            name="Basilisk Guild"
            elite_basic_troop="NPCCharacter.mod_basilisk_nobleman"
            basic_troop="NPCCharacter.mod_basilisk_trainee"
-		   melee_militia_troop="NPCCharacter.mod_basilisk_light_infantry"
+		       melee_militia_troop="NPCCharacter.mod_basilisk_light_infantry"
            ranged_militia_troop="NPCCharacter.mod_basilisk_skirmisher"
            melee_elite_militia_troop="NPCCharacter.mod_basilisk_heavy_infantry"
            ranged_elite_militia_troop="NPCCharacter.mod_basilisk_archer"

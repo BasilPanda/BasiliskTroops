@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item id="basilisk_banner_big"
+        name="{=WePcpx0u}Basilisk Big Banner"
+        body_name="bo_spear_b"
+        shield_body_name="bo_kite_shield_e"
+        recalculate_body="false"
+        mesh="campaign_flag"
+        using_tableau="true"
+        weight="4.0"
+        appearance="1"
+        Type="Shield"
+        item_holsters="polearm_back:polearm_back_2"
+        has_lower_holster_priority="true"
+		holster_position_shift="0,-0.035,-1.1">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield"
+              body_armor="1"
+              thrust_speed="82"
+              thrust_damage_type="Blunt"
+              speed_rating="82"
+              item_usage="banner"
+              position="0.0, 0.0, -0.80"
+              rotation="0.0, 0.0, 0.00"
+              physics_material="wood_shield"
+              weapon_length="300"
+              center_of_mass="0.0,0.1,0.1"
+              hit_points="50">
+        <WeaponFlags CanBlockRanged="false"
+                     HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true"
+           HeldInOffHand="true"
+           ForceAttachOffHandPrimaryItemBone="true"
+		   HasToBeHeldUp="true"
+		   />
+  </Item>
+  <Item id="basilisk_piercing_bolts"
+       name="Basilisk Piercing Bolts"
+       body_name="bo_capsule_arrow"
+       holster_body_name="bo_axe_short"
+       mesh="bolt_bl_a"
+       holster_mesh="bolt_bl_a_quiver"
+       flying_mesh="bolt_bl_flying"
+       holster_mesh_with_weapon="bolt_bl_a_quiver"
+       weight="0.05"
+       appearance="1"
+       Type="Bolts"
+       item_holsters="quiver_bolts:quiver_bolts_2:quiver_back_middle:quiver_back_top">
+    <ItemComponent>
+      <Weapon weapon_class="Bolt"
+              stack_amount="20"
+              thrust_speed="100"
+              thrust_damage_type="Pierce"
+			  thrust_damage="70"
+              speed_rating="0"
+              missile_speed="40"
+              weapon_length="47"
+              item_usage=""
+              rotation="180, 0, 0"
+              physics_material="missile"
+              sticking_position="0,-0.47,0"
+              sticking_rotation="90,0,0"
+			        trail_particle_name="psys_game_missile_flame"
+              center_of_mass="0,0,-0.1">
+        <WeaponFlags AttachAmmoToVisual="true"
+                     Consumable="true"
+					 CanPenetrateShield="true"
+					 Burning="true"
+                     AmmoSticksWhenShot="true"
+					 LeavesTrail="true"
+                     MultiplePenetration="true"
+                     AmmoBreaksOnBounceBack="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags ForceAttachOffHandPrimaryItemBone="true" />
+  </Item>
+  <CraftedItem id="basilisk_gm_glaive"
+              name="{=*}Grandmaster Glaive"
+              value="911511"
+              swing_speed="75"
+              thrust_speed="20"
+              swing_damage="50"
+              thrust_damage="50"
+              crafting_template="basilisk_glaive_template">
+    <Pieces>
+      <Piece id="grandmaster_glaive"
+             Type="Blade"
+             scale_factor="400" />
+      <Piece id="grandmaster_guard"
+             Type="Guard"
+             scale_factor="100" />
+      <Piece id="grandmaster_grip"
+             Type="Handle"
+             scale_factor="60" />
+      <Piece id="grandmaster_pommel"
+             Type="Pommel"
+             scale_factor="70" />
+    </Pieces>
+  </CraftedItem>
+</Items>

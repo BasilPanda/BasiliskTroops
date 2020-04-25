@@ -1,0 +1,33 @@
+<partyTemplates>
+  <MBPartyTemplate id="mod_basiliskguild_militia_party" >
+    <stacks>
+      <PartyTemplateStack min_value="1" max_value="1" troop="NPCCharacter.mod_basilisk_light_infantry" />
+	  <PartyTemplateStack min_value="1" max_value="1" troop="NPCCharacter.mod_basilisk_skirmisher" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="mod_basiliskguild_default_party" >
+    <stacks>
+    <PartyTemplateStack min_value="1" max_value="5" troop="NPCCharacter.mod_basilisk_knight" />
+	  <PartyTemplateStack min_value="1" max_value="5" troop="NPCCharacter.mod_basilisk_vanguard" />
+	  <PartyTemplateStack min_value="1" max_value="5" troop="NPCCharacter.mod_basilisk_ranger" />
+	  <PartyTemplateStack min_value="1" max_value="5" troop="NPCCharacter.mod_basilisk_slayer" />
+    <PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.mod_basilisk_heavy_infantry" />
+    <PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.mod_basilisk_heavy_cavalry" />
+	  <PartyTemplateStack min_value="4" max_value="15" troop="NPCCharacter.mod_basilisk_archer" />
+	  <PartyTemplateStack min_value="4" max_value="15" troop="NPCCharacter.mod_basilisk_light_cavalry" />
+	  <PartyTemplateStack min_value="8" max_value="15" troop="NPCCharacter.mod_basilisk_light_infantry" />
+	  <PartyTemplateStack min_value="8" max_value="15" troop="NPCCharacter.mod_basilisk_skirmisher" />
+	  <PartyTemplateStack min_value="12" max_value="20" troop="NPCCharacter.mod_basilisk_militia" />
+	  <PartyTemplateStack min_value="16" max_value="30" troop="NPCCharacter.mod_basilisk_trainee" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="mod_basiliskguild_knight_party" >
+    <stacks>
+      <PartyTemplateStack min_value="4" max_value="12" troop="NPCCharacter.mod_basilisk_knight" />
+      <PartyTemplateStack min_value="4" max_value="12" troop="NPCCharacter.mod_basilisk_squire" />
+      <PartyTemplateStack min_value="4" max_value="16" troop="NPCCharacter.mod_basilisk_heavy_cavalry" />
+      <PartyTemplateStack min_value="6" max_value="16" troop="NPCCharacter.mod_basilisk_light_cavalry" />
+    </stacks>
+  </MBPartyTemplate>
+  
+</partyTemplates>

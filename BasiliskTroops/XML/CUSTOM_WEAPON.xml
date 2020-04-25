@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+	<!-- Example Sword -->
+	<!-- Replace CUSTOM_TEMPLATE with the name of your template in new_templates.xml -->
+    <CraftedItem id="custom_sword"
+               name="{=*}Custom Sword"
+               crafting_template="CUSTOM_TEMPLATE"
+               value="100000"
+               is_merchandise="false">
+    <Pieces>
+      <Piece id="excalibur_blade"
+             Type="Blade"
+             scale_factor="130" /> <!-- Change the size of the blade -->
+      <Piece id="excalibur_guard"
+             Type="Guard"
+             scale_factor="170" /> <!-- Change the size of the guard -->
+      <Piece id="excalibur_grip"
+             Type="Handle"
+             scale_factor="100" /> <!-- Change the size of the handle -->
+      <Piece id="excalibur_pommel"
+             Type="Pommel"
+             scale_factor="100" /> <!-- Change the size of the pommel -->
+    </Pieces>
+  </CraftedItem>
+  <!-- All of these pieces are found in new_pieces.xml -->
+  
+  <!-- If you want to create a non-craftable item (bow, arrow, etc.), you can ignore the new_pieces and new_templates files -->
+  <!-- Instead, navigate to Modules\SandboxCore\ModuleData\spitems.xml and find an item you want to emulate (e.g. a specific bow)
+	   and copy from <Item> to <\Item> and paste it here (replace the sword above) and change the values as you see fit -->
+</Items>

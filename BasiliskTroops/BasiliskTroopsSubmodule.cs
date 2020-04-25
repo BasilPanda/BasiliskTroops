@@ -1,4 +1,6 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using System;
+using System.Windows.Forms;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
@@ -9,17 +11,19 @@ namespace BasiliskTroops
 
         public static readonly string ModuleName = "BasiliskGuild";
         
-        protected override void OnSubModuleLoad()
-        {
-            base.OnSubModuleLoad();
-        }
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             if (!(game.GameType is Campaign))
                 return;
             CampaignGameStarter gameInitializer = (CampaignGameStarter)gameStarterObject;
-
-            gameInitializer.AddBehavior(new BasiliskTroops());
+            try
+            {
+                gameInitializer.AddBehavior(new BasiliskTroops());
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
     }
 }
