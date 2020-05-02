@@ -194,6 +194,7 @@
     <Compile Include="BasiliskTroopsSubmodule.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TroopProperties.cs" />
+    <Compile Include="Util\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SubModule.xml">
